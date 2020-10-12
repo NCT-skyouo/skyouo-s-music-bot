@@ -1,4 +1,5 @@
 # skyouo-s-music-bot-v5
+[![Run on Repl.it](https://repl.it/badge/github/NCT-skyouo/skyouo-s-music-bot)](https://repl.it/github/NCT-skyouo/skyouo-s-music-bot)
 English Version is coming soon!
 ## 許可證
 本專案使用 Unlicense 和 MIT 開源證書進行開源, 如果您想要二次開發, 可以從中擇一

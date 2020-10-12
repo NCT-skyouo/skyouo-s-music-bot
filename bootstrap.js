@@ -1,6 +1,11 @@
-const version = "v5.0"
+const major = "0"
+const minor = "0"
+const patch = "0"
+const commit = "0"
+const version = `v5.${major}.${minor}-p${patch}-c${commit}`
 const config = require("./config/config.json");
 const Logger = require("./libs/logger.js");
+const fetch = require("node-fetch")
 
 const coreLogger = new Logger("核心進程", config.debug, config.ignore);
 // 待做, 檢查資料夾
@@ -51,6 +56,35 @@ if (version.includes("dev")) {
   coreLogger.notice("請注意, 本版本是測試版, 所以會有部分指令/事件不穩定!!")
 } else if (version.includes("release")) {
   coreLogger.notice("請注意, 本版本是公有版, unlicense 開源!!");
+}
+
+async function updater() {
+  try {
+    const res = await fetch("https://raw.githubusercontent.com/NCT-skyouo/skyouo-s-music-bot/master/version.json").catch((e) => { throw e })
+    const info = await res.json().catch((e) => { throw e })
+    const fetchedVer = `v5.${major}.${minor}-p${patch}-c${commit}`
+    if (Number(info.major) > Number(major)) {
+      coreLogger.warn("該版本已嚴重過時! 請更新!!!")
+      coreLogger.info("URL: https://github.com/NCT-skyouo/skyouo-s-music-bot")
+      coreLogger.info("目前版本: " + version)
+      coreLogger.info("最新版本: " + fetchedVer)
+    } else if (Number(info.minor) > Number(minor)) {
+      coreLogger.notice("該版本已過時! 請更新!")
+      coreLogger.info("URL: https://github.com/NCT-skyouo/skyouo-s-music-bot")
+      coreLogger.info("目前版本: " + version)
+      coreLogger.info("最新版本: " + fetchedVer)
+    } else if (Number(info.patch) > Number(patch) && Number(info.minor) <= Number(minor)) {
+      coreLogger.info("有新版本! 請更新!")
+      coreLogger.info("URL: https://github.com/NCT-skyouo/skyouo-s-music-bot")
+      coreLogger.info("目前版本: " + version)
+      coreLogger.info("最新版本: " + fetchedVer)
+    } else {
+      coreLogger.ok("目前已更新到最新版!!")
+    }
+  } catch (e) {
+    coreLogger.showErr(e)
+    coreLogger.warn("檢查版本失敗!")
+  }
 }
 // 待做, 開啟機器人
 coreLogger.info("正在啟動 bot.js!");

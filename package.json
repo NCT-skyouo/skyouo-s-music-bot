@@ -9,7 +9,6 @@
     "discord-ytdl-core": "^4.0.8",
     "discord.js": "12.2.0",
     "express": "^4.17.1",
-    "express-static-gzip": "^2.0.8",
     "ffmpeg-static": "4.2.7",
     "moment": "^2.29.0",
     "node-fetch": "^2.6.1",

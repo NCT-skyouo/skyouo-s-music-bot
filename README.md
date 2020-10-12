@@ -5,7 +5,7 @@ English Version is coming soon!
 ## 依賴庫
 本地依賴庫在 libs 資料夾中
 - Mojim, 魔鏡歌詞網爬蟲, Unlicense/MIT
-- json-db, json 數據庫, Unlicense
+- json-db, json 數據庫, Unlicense/MIT
 - [discord-player](https://github.com/Androz2091/discord-player), 原作者為 [Androz2091](https://github.com/Androz2091), MIT
 - logger.js, 終端紀錄器, Unlicense/MIT
 ## 設置

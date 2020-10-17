@@ -1,1 +1,1 @@
-run = "node indev/bootstrap.js"
+run = "node --expose_gc bootstrap.js"

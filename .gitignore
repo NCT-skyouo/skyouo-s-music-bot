@@ -1,0 +1,8 @@
+web/*
+index.js
+authServer.js
+package-lock.json
+.replit
+.upm/*
+node_modules
+config/_config.json

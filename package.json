@@ -1,24 +1,53 @@
-  {
+{
   "name": "skyouo-s-music-core",
   "version": "5.0.3",
   "dependencies": {
     "@discordjs/opus": "0.3.2",
+    "autoprefixer": "^10.0.1",
+    "browser-sync": "^2.26.13",
     "chalk": "^4.1.0",
     "cheerio": "1.0.0-rc.3",
+    "compression": "^1.7.4",
+    "cssnano": "^4.1.10",
     "discord-ytdl-core": "^4.1.0",
     "discord.js": "12.3.1",
     "express": "^4.17.1",
+    "express-static-gzip": "^2.0.8",
     "ffmpeg-static": "4.2.7",
+    "gulp": "^4.0.2",
+    "gulp-color": "0.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-imagemin": "^7.1.0",
+    "gulp-notify": "^3.2.0",
+    "gulp-nunjucks": "^5.1.0",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^9.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-uglify-es": "^2.0.0",
+    "imagemin-mozjpeg": "^9.0.0",
+    "jquery": "^3.5.1",
     "moment": "^2.29.0",
     "node-fetch": "^2.6.1",
+    "popper.js": "^1.16.1",
+    "simple-youtube-api": "^5.2.1",
     "spotify-url-info": "^2.0.0",
     "time-stamp": "^2.2.0",
     "youtube-dl-wrap": "1.1.2",
-    "ytdl-core": "^3.4.0",
+    "ytdl-core": "^4.0.0",
     "ytpl": "^1.0.1",
-    "ytsr": "^1.0.4"
+    "ytsr": "https://github.com/skick1234/node-ytsr.git"
   },
   "scripts": {
     "start": "node --expose_gc bootstrap.js"
+  },
+  "devDependencies": {
+    "standard": "^16.0.0"
+  },
+  "standard": {
+    "ignore": [
+      "libs/*",
+      "libs/*/*"
+    ]
   }
 }

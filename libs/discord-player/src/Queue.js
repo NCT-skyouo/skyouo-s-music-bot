@@ -30,71 +30,85 @@ const Track = require('./Track')
  * Represents a guild queue.
  */
 class Queue extends EventEmitter {
-    /**
+  /**
      * @param {Discord.Snowflake} guildID ID of the guild this queue is for.
      */
-    constructor (guildID) {
-        super()
-        /**
+  constructor (guildID) {
+    super()
+    /**
          * ID of the guild this queue is for.
          * @type {Discord.Snowflake}
          */
-        this.guildID = guildID
-        /**
+    this.guildID = guildID
+    /**
          * The voice connection of this queue.
          * @type {Discord.VoiceConnection}
          */
-        this.voiceConnection = null
-        /**
+    this.voiceConnection = null
+    /**
          * The song currently played.
          * @type {Track}
          */
-        this.playing = null
-        /**
+    this.playing = null
+    /**
          * The tracks of this queue. The first one is currenlty playing and the others are going to be played.
          * @type {Track[]}
          */
-        this.tracks = []
-        /**
+    this.tracks = []
+    /**
          * Whether the stream is currently stopped.
          * @type {boolean}
          */
-        this.stopped = false
-        /**
+    this.stopped = false
+    /**
          * Whether the last track was skipped.
          * @type {boolean}
          */
-        this.lastSkipped = false
-        /**
+    this.lastSkipped = false
+    /**
          * The stream volume of this queue. (0-100)
          * @type {number}
          */
-        this.volume = 100
-        /**
+    this.volume = 100
+    /**
          * Whether the stream is currently paused.
          * @type {boolean}
          */
-        this.paused = true
-        /**
+    this.paused = true
+    /**
          * Whether the repeat mode is enabled.
          * @type {boolean}
          */
-        this.repeatMode = false
-        /**
+    this.repeatMode = false
+    /**
+         * Whether the queue loop mode is enabled.
+         * @type {boolean}
+         */
+        this.queueLoopMode = false
+    /**
+         * Only use when queue loop mode is on.
+         * @type {Track[]}
+         */
+    this.tracksCache = []
+    /**
          * Filters status
          * @type {Filters}
          */
-        this.filters = {}
-        /**
+    this.filters = {}
+    /**
          * Additional stream time
          * @type {Number}
          */
-        this.additionalStreamTime = 0
-    }
+    this.additionalStreamTime = 0
+    /**
+         * Speed of the audio
+         */
+    this.speed = 1
+  }
 
-    get calculatedVolume () {
-        return this.filters.bassboost ? this.volume + 50 : this.volume
-    }
+  get calculatedVolume () {
+    return this.filters.bassboost ? this.volume + 50 : this.volume
+  }
 }
 
 module.exports = Queue

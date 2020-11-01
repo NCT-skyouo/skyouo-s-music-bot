@@ -1,0 +1,18 @@
+{
+  "core.botlogger.name": "機器人進程",
+  "core.processlogger.name": "後端進程",
+  "core.commandfileload.msg": "載入指令檔案 '%s' 成功!",
+  "core.commandfileload.error.fileIsInvalid": "無效的指令檔案 '%s'",
+  "core.eventfileload.msg": "載入事件檔案 %s 成功!",
+  "core.on.uncaughterror.msg": "發生錯誤: %s \n錯誤類別: %s",
+  "core.cli.gc.msg": "正在結束進程... (垃圾回收)",
+  "core.cli.gc.endmsg": "感謝您使用 Music v5 by NCT skyouo!!",
+  "core.botinfo": "資訊: \n機器人名稱: %s \n創建日期: %s\n總用戶: %d",
+  "core.cli.reloadcmd.mustprovide": "你必須提供要重啟的指令名稱! 用法: /reload [command]",
+  "core.cli.reload.commandnotfound": "找不到該指令!",
+  "core.cli.reload.success": "重啟成功!",
+  "core.seemslogin": "看起來已經登入至 Discord 機器人了!",
+  "core.awaitingready": "正在等待事件 'ready' ...",
+  "core.running.gc": "正在執行垃圾收集... (可以關閉在選項中的 \"debug\" 來忽略該消息)",
+  "music.notplaying": "目前沒有正在播放的歌曲!"
+}

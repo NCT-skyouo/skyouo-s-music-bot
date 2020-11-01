@@ -237,11 +237,6 @@ Visit **[ytdl-core](https://npmjs.com/package/ytdl-core)** for other functions.
 - **[ytdl-core-discord](https://npmjs.com/package/ytdl-core-discord)**
 - **[discord-player](https://npmjs.com/discord-player)**
 
-# Developers
-- **[@Snowflake107](https://github.com/Snowflake107)**
-- **[@Androz2091](https://github.com/Androz2091)**
-
 # Join our Official Discord Server
-- **[Snowflake Development ❄️](https://discord.gg/uqB8kxh)**
-- **[AndrozDev](https://discord.gg/Qreejcu)**
+- **[Snowflake Studio ❄️](https://discord.gg/uqB8kxh)**
 

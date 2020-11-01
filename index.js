@@ -25,6 +25,10 @@ app.get('/dashboard', (req, res) => {
   res.sendFile(__dirname + "/web/pages/index.html")
 })
 
+app.get('/gd', (req, res) => {
+  res.sendFile(__dirname + "/web/pages/index-0.html")
+})
+
 app.get('/dl', (req, res) => {
   res.download(__dirname + "/v5.tar.gz")
   //res.redirect('/')

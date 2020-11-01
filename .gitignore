@@ -4,5 +4,5 @@ authServer.js
 package-lock.json
 .replit
 .upm/*
-node_modules
+node_modules/*
 config/_config.json

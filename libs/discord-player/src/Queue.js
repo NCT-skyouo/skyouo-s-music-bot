@@ -74,7 +74,7 @@ class Queue extends EventEmitter {
          * Whether the stream is currently paused.
          * @type {boolean}
          */
-    this.paused = true
+    this.paused = false
     /**
          * Whether the repeat mode is enabled.
          * @type {boolean}
@@ -84,7 +84,7 @@ class Queue extends EventEmitter {
          * Whether the queue loop mode is enabled.
          * @type {boolean}
          */
-        this.queueLoopMode = false
+    this.queueLoopMode = false
     /**
          * Only use when queue loop mode is on.
          * @type {Track[]}

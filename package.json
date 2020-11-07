@@ -16,7 +16,7 @@
     "spotify-url-info": "^2.0.0",
     "time-stamp": "^2.2.0",
     "youtube-dl-wrap": "1.1.2",
-    "ytdl-core": "^4.0.0",
+    "ytdl-core": "^4.0.3",
     "ytpl": "^1.0.1",
     "ytsr": "https://github.com/skick1234/node-ytsr.git"
   },

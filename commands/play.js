@@ -70,7 +70,7 @@ module.exports = {
                 .setColor('FF2323')
                 .setFooter(config.footer)
                 .setImage(
-                  'https://media.discordapp.net/attachments/689072112069247026/754530841631260692/bye-bye-pikachu-icegif.gif'
+                  'https://media.discordapp.net/attachments/774291859648020480/774888000345473044/Shiron.gif'
                 )
             )
           })
@@ -90,7 +90,15 @@ module.exports = {
           })
           .on('channelEmpty', () => {
             // 頻道沒人時....
-            msg.channel.send('沒人了qwq')
+            msg.channel.send(
+              new MessageEmbed()
+                .setAuthor('🎶 | 頻道沒人了! qwq...', msg.guild.iconURL())
+                .setColor('FF2323')
+                .setFooter(config.footer)
+                .setImage(
+                  'https://media.discordapp.net/attachments/774291859648020480/774888000345473044/Shiron.gif'
+                )
+            )
           })
       } else {
         const ql = await player.getQueue(msg.guild.id)

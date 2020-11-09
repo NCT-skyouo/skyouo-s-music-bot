@@ -4,7 +4,7 @@
  * discord.js - 機器人 API, npm 外部組件
  * config - config/config.json, 本地檔案
  * logger - libs/logger.js, 本地依賴
- * player - libs/discord-player/index.js, 本地依賴, MIT開源, 作者為 Androz2091
+ * player - libs/v5-core/index.js, 本地依賴, Unlicense/MIT開源, 改良自 Androz2091/discord-player
  * mojim - libs/mojim/index.js, 自製爬蟲, 本地依賴, Unlicense/MIT 授權
  */
 const fs = require('fs')
@@ -13,7 +13,7 @@ const { Client, Collection, MessageEmbed, MessageAttachment } = require('discord
 const config = require(path.join(__dirname, 'config', 'config.json'))
 const Logger = require(path.join(__dirname, 'libs', 'logger.js'))
 const DB = require(path.join(__dirname, 'libs', 'json-db', 'index.js')).Database
-const { Player } = require(path.join(__dirname, 'libs', 'discord-player', 'index.js'))
+const { Player } = require(path.join(__dirname, 'libs', 'v5-core', 'index.js'))
 const Mojim = require(path.join(__dirname, 'libs', 'mojim', 'index.js'))
 
 // 初始選項
@@ -22,7 +22,7 @@ const opt = {
   apiKEYs: config.APIKEY
 }
 // 初始化 機器人 實例
-let bot = new Client()
+let bot = new Client({ fetchAllMembers: config.fetchAllMembers })
 // 初始化 音樂 功能
 const player = new Player(bot, opt)
 // 初始化 指令列表
@@ -30,7 +30,6 @@ bot.commands = new Collection()
 // 初始化 紀錄器
 const botLogger = new Logger('機器人進程', config.debug, config.ignore)
 const processLogger = new Logger('後端進程', config.debug, config.ignore)
-console.log(processLogger.debug)
 // 初始化 cd
 const cooldowns = new Collection()
 // 初始化 數據庫

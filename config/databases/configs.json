@@ -18,5 +18,25 @@
       "enable": false,
       "value": 1000
     }
+  },
+  "688576712656683105": {
+    "dj": {
+      "enable": false,
+      "list": [],
+      "people": []
+    },
+    "premium": {
+      "enable": false
+    },
+    "prefix": {
+      "value": null
+    },
+    "djonly": {
+      "enable": false
+    },
+    "maxqueue": {
+      "enable": false,
+      "value": 1000
+    }
   }
 }

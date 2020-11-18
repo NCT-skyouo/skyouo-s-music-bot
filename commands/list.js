@@ -4,7 +4,7 @@ module.exports = {
   aliases: ['ls'],
   run: async (bot, msg, args) => {
     const { config, MessageEmbed, sdb } = bot
-    const all = sdb.all()
+    const all = await sdb.all()
     const list = []
     for (const key in all) {
       const tmp = all[key]

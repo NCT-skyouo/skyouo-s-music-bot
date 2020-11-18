@@ -1,9 +1,9 @@
 const { MessageEmbed } = require('discord.js')
 
 module.exports = {
-  name: 'remuse',
+  name: 'resume',
   description: '繼續播放',
-  aliases: ['rmu'],
+  aliases: ['rmu', 'remuse'],
   run: async (bot, msg, args) => {
     const { player, config, isDJPerm } = bot
     try {
@@ -22,9 +22,9 @@ module.exports = {
       }
       const np = await player.nowPlaying(msg.guild.id)
       if (
-        !isDJPerm(np)
+        !await isDJPerm(np)
       ) { throw new Error('沒有權限繼續播放!') }
-      await player.remuse(msg.guild.id)
+      await player.resume(msg.guild.id)
       return msg.channel.send(
         new MessageEmbed()
           .setTitle('🎶 成功繼續播放', msg.guild.iconURL())

@@ -16,9 +16,9 @@ module.exports = {
       ) {
         throw new Error('您必須要與機器人在同一個語音頻道!')
       }
-      const gconf = db.get(msg.guild.id)
+      const gconf = await db.get(msg.guild.id)
 
-      if (gconf.djonly.enable && !isDJPerm({})) {
+      if (gconf.djonly.enable && !await isDJPerm({})) {
         throw new Error('服主已經開啟 DJ 限定模式!\n')
       }
       let res = await player.searchTracks(args.join(' '), true)

@@ -13,7 +13,7 @@ module.exports = {
           .setFooter(config.footer, bot.user.displayAvatarURL())
       )
     }
-    const all = sdb.all()
+    const all = await sdb.all()
     const list = []
     for (const key in all) {
       const tmp = all[key]
@@ -41,7 +41,7 @@ module.exports = {
         }
         const gconf = db.get(msg.guild.id)
 
-        if (gconf.djonly.enable && !isDJPerm({})) {
+        if (gconf.djonly.enable && !await isDJPerm({})) {
           throw new Error('服主已經開啟 DJ 限定模式!\n')
         }
         const isPlaying = player.isPlaying(msg.guild.id)
@@ -51,7 +51,7 @@ module.exports = {
           if (index == 0) {
             await player.play(msg.member.voice.channel, userlist[0].list[index], msg.author.tag)
           } else {
-            if ((index + 1) > gconf.maxqueue.value && gconf.maxqueue.enable && isDJPerm({})) {
+            if ((index + 1) > gconf.maxqueue.value && gconf.maxqueue.enable && await isDJPerm({})) {
               msg.channel.send(
                 new MessageEmbed()
                   .setTitle('已達歌曲上限!')

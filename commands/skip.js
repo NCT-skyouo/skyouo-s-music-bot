@@ -16,7 +16,7 @@ module.exports = {
       ) {
         throw new Error('您必須要與機器人在同一個語音頻道!')
       }
-      if (!isDJPerm(np)) throw new Error('沒有權限跳過!')
+      if (!await isDJPerm(np)) throw new Error('沒有權限跳過!')
       player.skip(msg.guild.id)
       return msg.channel.send(
         new MessageEmbed()
@@ -25,6 +25,7 @@ module.exports = {
           .setFooter(config.footer, bot.user.displayAvatarURL())
       )
     } catch (e) {
+      console.error(e)
       return msg.channel.send(
         new MessageEmbed()
           .setTitle('❌ 無法跳過', msg.guild.iconURL())

@@ -17,9 +17,9 @@ module.exports = {
         throw new Error('您必須要與機器人在同一個語音頻道!')
       } // 如果用戶不在和機器人相同的語音頻道
 
-      const gconf = db.get(msg.guild.id)
+      const gconf = await db.get(msg.guild.id)
 
-      if (gconf.djonly.enable && !isDJPerm({})) {
+      if (gconf.djonly.enable && !await isDJPerm({})) {
         throw new Error('服主已經開啟 DJ 限定模式!\n')
       }
 
@@ -70,7 +70,7 @@ module.exports = {
                 .setColor('FF2323')
                 .setFooter(config.footer)
                 .setImage(
-                  'https://media.discordapp.net/attachments/689072112069247026/754530841631260692/bye-bye-pikachu-icegif.gif'
+                  'https://media.discordapp.net/attachments/774291859648020480/774888000345473044/Shiron.gif'
                 )
             )
           })
@@ -90,11 +90,19 @@ module.exports = {
           })
           .on('channelEmpty', () => {
             // 頻道沒人時....
-            msg.channel.send('沒人了qwq')
+            msg.channel.send(
+              new MessageEmbed()
+                .setAuthor('🎶 | 頻道沒人了! qwq...', msg.guild.iconURL())
+                .setColor('FF2323')
+                .setFooter(config.footer)
+                .setImage(
+                  'https://media.discordapp.net/attachments/774291859648020480/774888000345473044/Shiron.gif'
+                )
+            )
           })
       } else {
         const ql = await player.getQueue(msg.guild.id)
-        if (ql.tracks.length > gconf.maxqueue.value && gconf.maxqueue.enable && isDJPerm({})) {
+        if (ql.tracks.length > gconf.maxqueue.value && gconf.maxqueue.enable && await isDJPerm({})) {
           throw new Error('本群組的歌單已經達到最高上限了!\nDJ 可無視該上限!')
         }
         const song = await player.addToQueue(

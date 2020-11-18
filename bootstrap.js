@@ -1,11 +1,14 @@
 const major = '0'
-const minor = '2'
-const patch = '0'
+var minor = '4'
+const patch = '1'
 const commit = '0'
-const version = `v5.${major}.${minor}-p${patch}-c${commit}`
+const version = `v5.${minor}.${patch}-c${commit}`
+const codename = `WindDragon`
+global["v5"] = { version: version, codename: codename }
 const config = require('./config/config.json')
 const fetch = require('node-fetch')
 const Logger = require('./libs/logger.js')
+const Store = require("./libs/better-storing/index.js")()
 
 const coreLogger = new Logger('核心進程', config.debug, config.ignore)
 
@@ -19,7 +22,7 @@ for (const folder of ['music/', 'music/resources/', 'music/local/', 'config/', '
 }
 // 待做, 檢查依賴
 let err = 0; let lacked = []
-for (const dep of ['fs', 'discord.js', './config/config.json', './libs/logger.js', './libs/discord-player/index.js', 'ytdl-core', 'ytpl', 'ytsr', 'youtube-dl-wrap', 'time-stamp']) {
+for (const dep of ['fs', 'discord.js', './config/config.json', './libs/logger.js', './libs/v5-core/index.js', 'ytdl-core', 'ytpl', 'ytsr', 'youtube-dl-wrap', 'time-stamp']) {
   try {
     require(dep)
   } catch (e) {
@@ -38,7 +41,7 @@ if (err) { // 如果出現錯誤
 let i = 0
 lacked = []
 let isAPIenable
-for (const _ in config) {
+/*for (const _ in config) {
   if (config[_] === undefined || config[_] === '') {
     i++
     lacked.push(_)
@@ -66,33 +69,35 @@ if (i) {
   coreLogger.fatal('設置不完全!!')
   for (const line of lacked) coreLogger.error('缺少設置: ' + line)
   process.exit(1)
-}
+}*/
 async function updater () {
   try {
     const res = await fetch('https://raw.githubusercontent.com/NCT-skyouo/skyouo-s-music-bot/master/version.json').catch((e) => { throw e })
     const info = await res.json().catch((e) => { throw e })
-    const fetchedVer = `v5.${major}.${minor}-p${patch}-c${commit}`
-    if (Number(info.major) > Number(major)) {
+    const fetchedVer = `v5.${info.latest.minor}.${info.latest.patch}-c${info.latest.commit}`
+    coreLogger.info("============= 更新日誌 =============")
+    if (Number(info.latest.major) > Number(major)) {
       coreLogger.warn('該版本已嚴重過時! 請更新!!!')
       coreLogger.info('URL: https://github.com/NCT-skyouo/skyouo-s-music-bot')
       coreLogger.info('目前版本: ' + version)
       coreLogger.info('最新版本: ' + fetchedVer)
-      coreLogger.info('新版內容: ' + info.update_message)
-    } else if (Number(info.minor) > Number(minor)) {
+      coreLogger.info('新版內容: ' + info.latest.update_message)
+    } else if (parseInt(info.latest.minor) > parseInt(minor)) {
       coreLogger.notice('該版本已過時! 請更新!')
       coreLogger.info('URL: https://github.com/NCT-skyouo/skyouo-s-music-bot')
       coreLogger.info('目前版本: ' + version)
       coreLogger.info('最新版本: ' + fetchedVer)
-      coreLogger.info('新版內容: ' + info.update_message)
-    } else if (Number(info.patch) > Number(patch) && Number(info.minor) <= Number(minor)) {
+      coreLogger.info('新版內容: ' + info.latest.update_message)
+    } else if (Number(info.latest.patch) > Number(patch) && Number(info.minor) <= Number(minor)) {
       coreLogger.info('有新版本! 請更新!')
       coreLogger.info('URL: https://github.com/NCT-skyouo/skyouo-s-music-bot')
       coreLogger.info('目前版本: ' + version)
       coreLogger.info('最新版本: ' + fetchedVer)
-      coreLogger.info('新版內容: ' + info.update_message)
+      coreLogger.info('新版內容: ' + info.latest.update_message)
     } else {
-      coreLogger.ok('目前已更新到最新版!!')
+      coreLogger.info('目前已更新到最新版!!')
     }
+    coreLogger.info("====================================")
   } catch (e) {
     coreLogger.showErr(e)
     coreLogger.warn('檢查版本失敗!')
@@ -108,12 +113,61 @@ if (version.includes('dev')) {
 } else if (version.includes('release')) {
   coreLogger.notice('請注意, 本版本是公有版, unlicense 開源!!')
 }
+// 初始化數據庫
+async function DatabaseTest() {
+  coreLogger.info("開始測試數據庫!")
+  coreLogger.info("正在測試 'configDB' 數據庫!")
+  var middles = Store.getBulitInMiddle()
+  try {
+    Store.use(config.store.configDB.type.toUpperCase())
+    var Database = Store.getStoringInstance()
+    var opt = config.store.configDB[config.store.configDB.type]
+    opt.startMiddle = middles.startJSON
+    opt.endMiddle = middles.endJSON
+    var configDB = new Database("configs", opt)
+    var done = await configDB.has("init")
+    if (!done) {
+      await configDB.set("init", "true").catch((e) => { throw e })
+      await configDB.remove("init").catch((e) => { throw e })
+    }
+  } catch (e) {
+    coreLogger.fatal("'configDB' 數據庫測試失敗!")
+    coreLogger.showErr(e)
+    coreLogger.fatal("由於 'configDB' 數據庫測試失敗, 所以 v5 將不會啟動!")
+    process.exit(1)
+  }
+  coreLogger.ok("'configDB' 數據庫測試通過!")
+  coreLogger.info("正在測試 'songsDB' 數據庫!")
+  try {
+    Store.use(config.store.songsDB.type.toUpperCase())
+    var Database = Store.getStoringInstance()
+    var opt = config.store.songsDB[config.store.songsDB.type]
+    opt.startMiddle = middles.startJSON
+    opt.endMiddle = middles.endJSON
+    var songsDB = new Database("songs", opt)
+    var done = await songsDB.has("init")
+    if (!done) {
+      await songsDB.set("init", "true").catch((e) => { throw e })
+      await songsDB.remove("init").catch((e) => { throw e })
+    }
+  } catch (e) {
+    coreLogger.fatal("'songsDB' 數據庫測試失敗!")
+    coreLogger.showErr(e)
+    coreLogger.fatal("由於 'songsDB' 數據庫測試失敗, 所以 v5 將不會啟動!")
+    process.exit(1)
+  }
+  coreLogger.ok("'songsDB' 數據庫測試通過!")
+  coreLogger.ok("測試完畢!")
+}
+
+coreLogger.info("初始化完畢!")
 // 待做, 開啟機器人
 coreLogger.info('正在啟動 bot.js!')
 try {
-  require('./bot.js')
+  //require('./bot.js')
   updater()
-  // require('./index.js')
+  DatabaseTest()
+  require('./index.js')
 } catch (e) {
   coreLogger.fatal('進程錯誤!!!')
   for (const line of e.toString().split('\n')) coreLogger.error(line)

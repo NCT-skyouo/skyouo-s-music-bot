@@ -11,8 +11,53 @@
   "ownerid": "",
   "disableMentionForPrefix": false,
   "mentionForPrefixTitle": "",
+  "fetchAllMembers": false,
   "searchProvider": "Scraping",
   "APIKEY": [""],
+  "store": {
+    "configDB": {
+      "type": "json",
+      "json": {
+        "path": "./config/databases",
+        "caching": true
+      },
+      "mysql": {
+        "host": "localhost",
+        "user": "root",
+        "password": "password"
+      },
+      "mongo": {
+        "url": "mongo://yourMongoDatabaseURL"
+      },
+      "redis": {
+        "port": 6379,
+        "host": "localhost",
+        "family": 4,
+        "password": "password"
+      }
+    },
+    "songsDB": {
+      "type": "json",
+      "json": {
+        "path": "./config/databases",
+        "caching": true
+      },
+      "mysql": {
+        "host": "localhost",
+        "user": "root",
+        "password": "password"
+      },
+      "mongo": {
+        "url": "mongo://yourMongoDatabaseURL"
+      },
+      "redis": {
+        "port": 6379,
+        "host": "localhost",
+        "family": 4,
+        "password": "password"
+      }
+    }
+  },
   "defaultconfig": {
     "dj": {
       "enable": false,

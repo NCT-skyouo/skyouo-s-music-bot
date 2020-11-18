@@ -16,7 +16,7 @@ module.exports = {
         throw new Error('您必須要與機器人在同一個語音頻道!')
       }
       const np = await bot.player.nowPlaying(msg.guild.id)
-      if (!bot.isDJPerm(np)) throw new Error('沒有權限!!')
+      if (!await bot.isDJPerm(np)) throw new Error('沒有權限!!')
       const ncEnabled = await bot.player.getQueue(msg.guild.id).filters.nightcore
       bot.player.setFilters(msg.guild.id, {
         nightcore: !ncEnabled

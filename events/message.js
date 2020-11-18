@@ -10,7 +10,7 @@ module.exports = (bot, msg) => {
 
   bot.isDJPerm = np =>
     msg.member.hasPermission('MANAGE_ROLES') ||
-    msg.member.voice.channel.members.map(m => m.user.tag).length <= 2 ||
+    msg.guild.me.voice.channel.members.map(m => m.user.tag).length <= 2 ||
     np.requestedBy === msg.author.tag ||
     gdb.dj.people.includes(msg.author.id) ||
     gdb.dj.list.some(r => msg.member.role.map(r_ => r_.id).includes(r))

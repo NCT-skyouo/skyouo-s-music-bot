@@ -22,7 +22,7 @@ module.exports = {
       }
       const np = await player.nowPlaying(msg.guild.id)
       if (
-        !isDJPerm(np)
+        !await isDJPerm(np)
       ) { throw new Error('沒有權限繼續播放!') }
       await player.shuffle(msg.guild.id)
       return msg.channel.send(

@@ -15,7 +15,7 @@ module.exports = {
         )
         .addFields(
           { name: '會用什麼開源許可證?', value: '[Unlicense](https://unlicense.org) ' },
-          { name: '你爲此付出了什麼?', value: '一堆時間.' }
+          { name: '你爲此付出了什麼?', value: '一堆時間.' },
           { name: "是否還會在更新下去", value: "是的, 我仍舊會維護 v5, 直到明年 1 月" }
         )
         .addField('銘謝名單', 'Patreon#4935 - v4, v4.5 開發者\nzheng8788#4893 - v3 v3.5 v4 v4.5 v5 自願測試者, Bug 獵人(7)\ngohchengxian#7445 - v5 自願測試者, Bug 獵人(2)\nRICE.#5161 - v4.5 v5 自願測試者 (其實不太算xdd)\nziblock214#4132 - v5 自願測試者\n[Androz2091](https://github.com/Androz2091) - discord-player 原作者\nNCT skyouo#4092 - 專案主要維護者, json-db, mojim-crawler 作者')

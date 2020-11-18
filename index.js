@@ -18,7 +18,8 @@ app.use("/assets", expressStaticGzip(__dirname + "/web/assets", {
 }));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + "/web/pages/blank.html")
+  // res.sendFile(__dirname + "/web/pages/blank.html")
+  res.status(200).send("<div>Hello</div><script>null</script>")
 });
 
 app.get('/dashboard', (req, res) => {

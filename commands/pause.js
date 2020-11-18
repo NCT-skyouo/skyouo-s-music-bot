@@ -20,7 +20,7 @@ module.exports = {
       }
       const np = await player.nowPlaying(msg.guild.id)
       if (
-        !isDJPerm(np)
+        !await isDJPerm(np)
       ) { throw new Error('沒有權限暫停播放!') }
       player.pause(msg.guild.id)
       return msg.channel.send(

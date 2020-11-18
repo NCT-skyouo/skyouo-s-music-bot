@@ -1,9 +1,11 @@
 {
   "762627112867725403": {
     "dj": {
-      "enable": false,
+      "enable": true,
       "list": [],
-      "people": []
+      "people": [
+        "607134057226174464"
+      ]
     },
     "premium": {
       "enable": false

@@ -1,6 +1,6 @@
 {
   "name": "skyouo-s-music-core",
-  "version": "5.0.3",
+  "version": "5.4.1",
   "dependencies": {
     "@discordjs/opus": "0.3.2",
     "chalk": "^4.1.0",
@@ -18,7 +18,7 @@
     "simple-youtube-api": "^5.2.1",
     "spotify-url-info": "^2.0.0",
     "sql": "^0.78.0",
-    "sync-mysql": "^3.0.1",
+    "sync-mysql": "TokyoFarmer/node-sql-2",
     "time-stamp": "^2.2.0",
     "youtube-dl-wrap": "1.1.2",
     "ytdl-core": "fent/node-ytdl-core",

@@ -1,10 +1,10 @@
-module.exports = (bot, msg) => {
-  let gdb = bot.db.get(msg.guild.id)
+module.exports = async (bot, msg) => {
+  let gdb = await bot.db.get(msg.guild.id)
   if (!gdb) {
-    bot.db.set(msg.guild.id, bot.config.defaultconfig)
+    await bot.db.set(msg.guild.id, bot.config.defaultconfig)
     gdb = bot.config.defaultconfig
   }
-  const preset = bot.db.get(msg.guild.id).prefix || bot.config.defaultconfig.prefix
+  const preset = gdb.prefix || bot.config.defaultconfig.prefix
   msg.guild.prefix = preset.value || bot.config.prefix
   const prefix = msg.guild.prefix || bot.config.prefix
 

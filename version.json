@@ -2,8 +2,8 @@
   "latest": {
     "major": "0",
     "minor": "4",
-    "patch": "0",
+    "patch": "1",
     "commit": "0",
-    "update_message": "更新 previous, jump 指令修復"
+    "update_message": "更新 數據保存方法."
   }
 }

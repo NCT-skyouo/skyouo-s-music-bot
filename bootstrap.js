@@ -164,10 +164,10 @@ coreLogger.info("初始化完畢!")
 // 待做, 開啟機器人
 coreLogger.info('正在啟動 bot.js!')
 try {
-  //require('./bot.js')
+  require('./bot.js')
   updater()
   DatabaseTest()
-  require('./index.js')
+  //require('./index.js')
 } catch (e) {
   coreLogger.fatal('進程錯誤!!!')
   for (const line of e.toString().split('\n')) coreLogger.error(line)

@@ -28,4 +28,15 @@ n 12
 - 6. 享受你的音樂機器人!
 
 ## android 支援
-目前 android 支援還在測試階段.
+目前 android 支援還在測試階段
+
+步驟 (若已經完成安裝請按照步驟5, 9 啟動機器人):
+- 1. 使用 andronix 安裝您喜歡的 linux distro (這裡以 ubuntu/debian 作為示範)
+- 2. 啟動您的 linux distro (例 ``./start-ubuntu.sh``)
+- 3. 使用 ``apt install git nodejs -y``
+- 4. 使用 ``git clone https://github.com/NCT-skyouo/skyouo-s-music-bot``
+- 5. 使用 ``cd skyouo-s-music-bot``
+- 6. 將 package.json 中的 ``"@discordjs/opus": "0.3.2"`` 替換成 ``"opusscript": "0.0.7"``
+- 7. 使用 ``npm i``
+- 8. 填配置
+- 9. 使用 ``npm start``

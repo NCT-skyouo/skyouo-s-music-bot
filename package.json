@@ -20,7 +20,7 @@
     "sql": "^0.78.0",
     "sync-mysql": "TokyoFarmer/node-sql-2",
     "time-stamp": "^2.2.0",
-    "youtube-dl-wrap": "1.1.2",
+    "youtube-dl-wrap": "2.0.0",
     "ytdl-core": "fent/node-ytdl-core",
     "ytpl": "^1.0.1",
     "ytsr": "TimeForANinja/node-ytsr#wip-api-adjustments"

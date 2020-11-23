@@ -9,7 +9,7 @@
     "discord-ytdl-core": "^5.0.0",
     "discord.js": "12.5.0",
     "express": "^4.17.1",
-    "express-static-gzip": "^2.0.8",
+    "express-static-gzip": "^2.1.0",
     "ffmpeg-static": "4.2.7",
     "ioredis": "^4.19.2",
     "moment": "^2.29.0",

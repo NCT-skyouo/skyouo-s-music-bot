@@ -16,7 +16,7 @@
     "node-fetch": "^2.6.1",
     "quickmongo": "^2.0.6",
     "simple-youtube-api": "^5.2.1",
-    "spotify-url-info": "^2.0.0",
+    "spotify-url-info": "^2.2.0",
     "sql": "^0.78.0",
     "sync-mysql": "TokyoFarmer/node-sql-2",
     "time-stamp": "^2.2.0",

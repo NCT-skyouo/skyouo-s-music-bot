@@ -12,7 +12,7 @@
     "express-static-gzip": "^2.1.0",
     "ffmpeg-static": "4.2.7",
     "ioredis": "^4.19.2",
-    "moment": "^2.29.0",
+    "moment": "^2.29.1",
     "node-fetch": "^2.6.1",
     "quickmongo": "^2.0.6",
     "simple-youtube-api": "^5.2.1",

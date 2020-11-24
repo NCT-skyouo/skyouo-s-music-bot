@@ -29,7 +29,7 @@
     "start": "node --expose_gc bootstrap.js"
   },
   "devDependencies": {
-    "standard": "^16.0.0"
+    "standard": "^16.0.3"
   },
   "standard": {
     "ignore": [

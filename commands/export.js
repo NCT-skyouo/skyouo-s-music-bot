@@ -18,13 +18,14 @@ module.exports = {
       if (!args[0]) {
         throw new Error(`錯誤的用法!\n正確用法: ${msg.guild.prefix}export [歌單名稱]`)
       }
-      if (sdb.get(`${msg.author.id}-${args[0]}`)) {
+      var res = await sdb.get(`${msg.author.id}-${args.join(" ")}`)
+      if (res) {
         throw new Error('該歌單已經存在!\n如果要強制覆蓋請用' + msg.guild.prefix + 'forceExp [歌單名稱]')
       }
       const q = await player.getQueue(msg.guild.id)
       const allInfo = q.tracks.map(t => t.getAllInfo) || []
       allInfo.unshift(q.playing.getAllInfo)
-      sdb.set(`${msg.author.id}-${args[0]}`, allInfo)
+      await sdb.set(`${msg.author.id}-${args.join(" ")}`, allInfo)
       return msg.channel.send(
         new MessageEmbed()
         .setTitle('⭕ 匯出成功!')

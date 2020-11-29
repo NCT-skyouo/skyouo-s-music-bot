@@ -13,7 +13,7 @@ module.exports = {
           .setTitle('❌ 無法下載', msg.guild.iconURL())
           .setColor('FF2323')
           .addField('錯誤訊息', '```' + e + '```')
-          .setFooter('教學機器人', bot.user.displayAvatarURL())
+          .setFooter(config.footer, bot.user.displayAvatarURL())
       )
     }
     function download (song) {
@@ -25,7 +25,7 @@ module.exports = {
             .setColor('FFE023')
             .addField('歌曲', `[${song.name}](${song.url})`)
             .addField('請求者', msg.author.tag)
-            .setFooter('音樂, Music.', bot.user.displayAvatarURL())
+            .setFooter(config.footer, bot.user.displayAvatarURL())
         )
         const randint = (min, max) => Math.random() * (max - min + 1) + min
         const vid = msg.author.id + '-' + randint(0, 9999999) + '.mp3'
@@ -38,7 +38,7 @@ module.exports = {
               .setTitle('❌ 無法下載', msg.guild.iconURL())
               .setColor('FF2323')
               .addField('錯誤訊息', '```' + e.toString() + '```')
-              .setFooter('教學機器人', bot.user.displayAvatarURL())
+              .setFooter(config.footer, bot.user.displayAvatarURL())
           )
           resolve()
         })

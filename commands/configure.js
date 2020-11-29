@@ -25,6 +25,8 @@ module.exports = {
         if (!any) {
           msg.channel.send(
             embed
+              .setTitle("找不到該用戶!")
+              .setColor("FF0230")
               .setFooter(config.footer, bot.user.displayAvatarURL())
           )
           return true
@@ -49,15 +51,15 @@ module.exports = {
         return this
       }
 
-      let gconf = db.get(msg.guild.id)
+      let gconf = await db.get(msg.guild.id)
       if (!gconf) {
-        db.set(msg.guild.id, config.defaultconfig)
+        await db.set(msg.guild.id, config.defaultconfig)
       }
 
       gconf = gconf || config.defaultconfig
 
       const dpre = msg.guild.prefix
-      const gdata = bot.db.get(msg.guild.id)
+      const gdata = await db.get(msg.guild.id)
       switch (args[0]) {
         case 'prefix':
           if (!args[1]) {
@@ -74,7 +76,7 @@ module.exports = {
             if (!isAdmin()) return
 
             gdata.prefix.value = args[1].toLowerCase()
-            bot.db.set(msg.guild.id, gdata)
+            await db.set(msg.guild.id, gdata)
             msg.channel.send(
               new MessageEmbed()
                 .setTitle('設置成功!')
@@ -120,7 +122,7 @@ module.exports = {
                 if (gdata.dj.people.includes(user.id)) return
                 gdata.dj.people.push(user.id)
                 gdata.dj.enable = true
-                bot.db.set(msg.guild.id, gdata)
+                await db.set(msg.guild.id, gdata)
                 return done()
               } else if (args[2] === 'role') {
                 const embed = new MessageEmbed()
@@ -133,7 +135,7 @@ module.exports = {
                 if (gdata.dj.list.includes(roles.id)) return
                 gdata.dj.list.push(roles.id)
                 gdata.dj.enable = true
-                bot.db.set(msg.guild.id, gdata)
+                await db.set(msg.guild.id, gdata)
                 return done()
               } else return
             } else if (args[1] === 'remove') {
@@ -149,7 +151,7 @@ module.exports = {
                 if (!gdata.dj.people.includes(user.id)) return
                 gdata.dj.people.remove(user.id)
                 if (gdata.dj.people.length === 0 && gdata.dj.list.length === 0) gdata.dj.enable = false
-                bot.db.set(msg.guild.id, gdata)
+                await db.set(msg.guild.id, gdata)
                 return done()
               } else if (args[2] === 'role') {
                 const embed = new MessageEmbed()
@@ -162,7 +164,7 @@ module.exports = {
                 if (!gdata.dj.list.includes(roles.id)) return
                 gdata.dj.list.remove(roles.id)
                 if (gdata.dj.people.length === 0 && gdata.dj.list.length === 0) gdata.dj.enable = false
-                bot.db.set(msg.guild.id, gdata)
+                await db.set(msg.guild.id, gdata)
                 return done()
               } else return
             }
@@ -179,12 +181,15 @@ module.exports = {
                 .setColor('FFEE07')
                 .setDescription('高級版包含了 8d, bass, karaoke, subboost, nightcore 等混聲, \n還有 download 高級功能, \n購買高級版也是對作者的一大支持, \n倘若您覺得這台機器人有幫助到你, \n您可以將該機器人分享給朋友或者購買高級版')
                 .addField('狀態', (gdata.premium.enable ? '⭕ 已開啟' : '❌ 未開啟'))
+                .addField("開啟", "使用 ``" + msg.guild.prefix + "config premium enable`` 開啟 v5 高級版!")
             )
-          } else if (args[1] === 'toggle') {
-            if (!msg.author.id === config.ownerid) return msg.channel.send('無權限!')
+          } else if (args[1] === 'enable') {
+            // if (msg.author.id !== config.ownerid) return msg.channel.send('無權限!')
 
-            gdata.premium.enable = !gdata.premium.enable
-            bot.db.set(msg.guild.id, gdata)
+            if (gdata.premium.enable) return
+
+            gdata.premium.enable = true
+            await db.set(msg.guild.id, gdata)
             return msg.channel.send((gdata.premium.enable ? '開啟' : '關閉') + '成功!')
           }
           break
@@ -203,7 +208,7 @@ module.exports = {
             if (!isAdmin()) return
 
             gdata.djonly.enable = !gdata.djonly.enable
-            bot.db.set(msg.guild.id, gdata)
+            await db.set(msg.guild.id, gdata)
             msg.channel.send(
               new MessageEmbed()
                 .setTitle('設置成功!')
@@ -216,10 +221,10 @@ module.exports = {
           if (!args[1]) {
             return msg.channel.send(
               new MessageEmbed()
-                .setTitle('DJ 限定 (DJ only)')
+                .setTitle('最大隊列 (Max queue size)')
                 .setColor('2323F7')
                 .setThumbnail(msg.guild.iconURL())
-                .addField('目前 Max Queue 的狀態: ' + (gconf.maxqueue.enable ? ':o: 已開啟 - ' + gconf.maxqueue.value + ' 首最大上限' : ':x: 未開啟'), `\`\`\`${dpre}config maxqueue toggle | 開啟\n${dpre}config maxqueue set [歌單上限] | 開啟\`\`\``, true)
+                .addField('目前 Max Queue size 的狀態: ' + (gconf.maxqueue.enable ? ':o: 已開啟 - ' + gconf.maxqueue.value + ' 首最大上限' : ':x: 未開啟'), `\`\`\`${dpre}config maxqueue toggle | 開啟\n${dpre}config maxqueue set [歌單上限] | 設置上限\`\`\``, true)
                 .setFooter(config.footer, bot.user.displayAvatarURL())
             )
             // show the prefix
@@ -227,7 +232,7 @@ module.exports = {
             if (!isAdmin()) return
 
             gdata.maxqueue.enable = !gdata.maxqueue.enable
-            bot.db.set(msg.guild.id, gdata)
+            await db.set(msg.guild.id, gdata)
             msg.channel.send(
               new MessageEmbed()
                 .setTitle('設置成功!')
@@ -253,7 +258,7 @@ module.exports = {
               )
             }
             gdata.maxqueue.value = Number(args[2])
-            bot.db.set(msg.guild.id, gdata)
+            await db.set(msg.guild.id, gdata)
             msg.channel.send(
               new MessageEmbed()
                 .setTitle('設置成功!')
@@ -269,13 +274,13 @@ module.exports = {
               .setThumbnail(msg.guild.iconURL())
               .setColor('FFFF23')
               .addFields(
-                { name: '🎶 DJ', value: (gconf.dj.enable ? ':o: 已開啟' : ':x: 未開啟') + '\n`' + dpre + 'config dj`', inline: true },
-                { name: '💳 Permium', value: (gconf.premium.enable ? ':o: 已開啟' : ':x: 未開啟') + '\n`' + dpre + 'config permium`', inline: true },
-                { name: '🗝️ Prefix', value: (gconf.prefix.value ? ':o: 已自訂' : ':x: 未自訂') + '\n`' + dpre + 'config prefix`', inline: true }
+                { name: '🎶 DJ', value: `${(gconf.dj.enable ? ':o: 已開啟' : ':x: 未開啟')}\n\`${dpre}config dj\``, inline: true },
+                { name: '💳 Premium', value: `${(gconf.premium.enable ? ':o: 已開啟' : ':x: 未開啟')}\n\`${dpre}config premium\``, inline: true },
+                { name: '🗝️ Prefix', value: `${(gconf.prefix.value ? ':o: 已自訂' : ':x: 未自訂')}\n\`${dpre}config prefix\``, inline: true }
               )
               .addFields(
-                { name: '🚷 DJ Only', value: (gconf.djonly.enable ? ':o: 已開啟' : ':x: 未自訂') + '\n`' + dpre + 'config djonly`', inline: true },
-                { name: '🔄 Max Queue length', value: (gconf.maxqueue.enable ? ':o: 已開啟' : ':x: 未自訂') + '\n`' + dpre + 'config maxqueue`', inline: true },
+                { name: '🚷 DJ Only', value: `${(gconf.djonly.enable ? ':o: 已開啟' : ':x: 未開啟')}\n\`${dpre}config djonly\``, inline: true },
+                { name: '🔄 Max Queue length', value: `${(gconf.maxqueue.enable ? ':o: 已開啟' : ':x: 未開啟')}\n\`${dpre}config maxqueue\``, inline: true },
                 { name: '🗺️ Language (即將到來)', value: '繁體中文\n`' + dpre + 'config language`', inline: true }
               )
               .setFooter(config.footer, bot.user.displayAvatarURL())

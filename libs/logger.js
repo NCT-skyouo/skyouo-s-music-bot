@@ -63,7 +63,7 @@ class Logger {
 
   log (caller, args, level, color) {
     if (this.ignore.includes(level)) return this
-    console.log(`[${stamp('HH:mm:ss', new Date(), 8)}] [${color(`${caller}/${level}`)}] ${Array.from(args)}`)
+    process.stdout.write(`[${stamp('HH:mm:ss', new Date(), 8)}] [${color(`${caller}/${level}`)}] ${Array.from(args)}\n`)
     return this
   }
 }

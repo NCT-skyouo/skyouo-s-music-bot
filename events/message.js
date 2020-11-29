@@ -1,16 +1,16 @@
-module.exports = (bot, msg) => {
-  let gdb = bot.db.get(msg.guild.id)
+module.exports = async (bot, msg) => {
+  let gdb = await bot.db.get(msg.guild.id)
   if (!gdb) {
-    bot.db.set(msg.guild.id, bot.config.defaultconfig)
+    await bot.db.set(msg.guild.id, bot.config.defaultconfig)
     gdb = bot.config.defaultconfig
   }
-  const preset = bot.db.get(msg.guild.id).prefix || bot.config.defaultconfig.prefix
+  const preset = gdb.prefix || bot.config.defaultconfig.prefix
   msg.guild.prefix = preset.value || bot.config.prefix
   const prefix = msg.guild.prefix || bot.config.prefix
 
   bot.isDJPerm = np =>
     msg.member.hasPermission('MANAGE_ROLES') ||
-    msg.member.voice.channel.members.map(m => m.user.tag).length <= 2 ||
+    msg.guild.me.voice.channel.members.map(m => m.user.tag).length <= 2 ||
     np.requestedBy === msg.author.tag ||
     gdb.dj.people.includes(msg.author.id) ||
     gdb.dj.list.some(r => msg.member.role.map(r_ => r_.id).includes(r))

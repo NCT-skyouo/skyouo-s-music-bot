@@ -32,7 +32,7 @@ module.exports = {
           .setFooter(config.footer, bot.user.displayAvatarURL())
       )
     }
-    const all = sdb.all()
+    const all = await sdb.all()
     const list = []
     for (const key in all) {
       const tmp = all[key]

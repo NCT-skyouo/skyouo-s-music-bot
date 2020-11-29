@@ -20,7 +20,7 @@ module.exports = {
       }
       const np = await player.nowPlaying(msg.guild.id)
       if (
-        !isDJPerm(np)
+        !await isDJPerm(np)
       ) { throw new Error('沒有權限!') }
       if (!args[0]) throw new Error("缺少重要參數: <track number>")
       player.jump(msg.guild.id, Number(args[0]) - 1).then(() => {

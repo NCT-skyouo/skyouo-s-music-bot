@@ -21,7 +21,7 @@ module.exports = {
       const q = await player.getQueue(msg.guild.id)
       const allInfo = q.tracks.map(t => t.getAllInfo) || []
       allInfo.unshift(q.playing.getAllInfo)
-      sdb.set(`${msg.author.id}-${args[0]}`, allInfo)
+      await sdb.set(`${msg.author.id}-${args[0]}`, allInfo)
       return msg.channel.send
       (
         new MessageEmbed()

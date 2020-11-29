@@ -4,16 +4,17 @@
  * discord.js - 機器人 API, npm 外部組件
  * config - config/config.json, 本地檔案
  * logger - libs/logger.js, 本地依賴
- * player - libs/discord-player/index.js, 本地依賴, MIT開源, 作者為 Androz2091
+ * player - libs/v5-core/index.js, 本地依賴, Unlicense/MIT開源, 改良自 Androz2091/discord-player
  * mojim - libs/mojim/index.js, 自製爬蟲, 本地依賴, Unlicense/MIT 授權
+ * db.js - db.js, 用於建構數據庫
  */
 const fs = require('fs')
 const path = require('path')
 const { Client, Collection, MessageEmbed, MessageAttachment } = require('discord.js')
 const config = require(path.join(__dirname, 'config', 'config.json'))
 const Logger = require(path.join(__dirname, 'libs', 'logger.js'))
-const DB = require(path.join(__dirname, 'libs', 'json-db', 'index.js')).Database
-const { Player } = require(path.join(__dirname, 'libs', 'discord-player', 'index.js'))
+const DB = require(path.join(__dirname, 'db.js'))
+const { Player } = require(path.join(__dirname, 'libs', 'v5-core', 'index.js'))
 const Mojim = require(path.join(__dirname, 'libs', 'mojim', 'index.js'))
 
 // 初始選項
@@ -22,7 +23,7 @@ const opt = {
   apiKEYs: config.APIKEY
 }
 // 初始化 機器人 實例
-let bot = new Client()
+let bot = new Client({ fetchAllMembers: config.fetchAllMembers })
 // 初始化 音樂 功能
 const player = new Player(bot, opt)
 // 初始化 指令列表
@@ -30,12 +31,11 @@ bot.commands = new Collection()
 // 初始化 紀錄器
 const botLogger = new Logger('機器人進程', config.debug, config.ignore)
 const processLogger = new Logger('後端進程', config.debug, config.ignore)
-console.log(processLogger.debug)
 // 初始化 cd
 const cooldowns = new Collection()
 // 初始化 數據庫
-const db = new DB('configs', path.join(__dirname, 'config', 'databases'))
-const sdb = new DB('songs', path.join(__dirname, 'config', 'databases'))
+const db = DB('configs', 'configDB')
+const sdb = DB('songs', 'songsDB')
 // 綁定代碼
 bot.botLogger = botLogger
 bot.processLogger = processLogger
@@ -89,7 +89,20 @@ process.on('uncaughtException', (err, origin) => {
   )
 })
 
+process.on('unhandledRejection', error => {
+  processLogger.error(
+    `發生錯誤: ${error}\n` +
+    `訊息: ${error.stack}`
+  )
+})
+
 // 待做 - 啟用管理員控制面板
+
+// 啟用全域 gc
+if (!global.gc) {
+  require("v8").setFlagsFromString('--expose_gc')
+  global.gc = require("vm").runInNewContext('gc')
+}
 
 // 使用 命令列介面
 process.stdin.on('readable', () => {
@@ -126,9 +139,10 @@ process.stdin.on('readable', () => {
       }
     }
   }
+  return undefined
 })
 
-bot.login(config.token)
+bot.login(config.token2)
   .then(() => {
     processLogger.ok('看起來已經登入至 Discord 機器人了!')
     botLogger.info("正在等待事件 'ready' ...")
@@ -136,6 +150,11 @@ bot.login(config.token)
       processLogger.debug('正在執行垃圾收集... (可以關閉在選項中的 "debug" 來忽略該消息)')
       global.gc()
     }, 60000)
+    processLogger.info("正在將機器人頭像和名稱寫入 tmp.json!")
+    fs.writeFileSync("tmp.json", JSON.stringify({ avatar: bot.user.displayAvatarURL({ format: 'png' }), name: bot.user.tag }))
+    processLogger.info("正在啟動控制面板!")
+    global._ = { bot: bot }
+    if (config.web.enable) require('./index.js')
   })
   .catch((e) => {
     botLogger.error(e.toString())

@@ -16,8 +16,8 @@ module.exports = {
       ) {
         throw new Error('您必須要與機器人在同一個語音頻道!')
       }
-      if (!isDJPerm(np)) throw new Error('沒有權限移除!')
-      player.remove(msg.guild.id, Number(args[0]) - 1).then(t => {
+      if (!await isDJPerm(np)) throw new Error('沒有權限移除!')
+      player.remove(msg.guild.id, (typeof args[0] === 'number' ? Number(args[0]) - 1 : args[0])).then(t => {
         if (!t) {
           throw new Error('找不到要移除的歌曲')
         } else {

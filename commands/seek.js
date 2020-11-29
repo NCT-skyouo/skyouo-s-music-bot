@@ -15,7 +15,7 @@ module.exports = {
     ) {
       throw new Error('您必須要與機器人在同一個語音頻道!')
     }
-    if (!isDJPerm(np)) throw new Error('沒有權限!!')
+    if (!await isDJPerm(np)) throw new Error('沒有權限!!')
     player
       .seek(msg.guild.id, args[0])
       .then(async () => {

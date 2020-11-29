@@ -142,7 +142,7 @@ process.stdin.on('readable', () => {
   return undefined
 })
 
-bot.login(config.token2)
+bot.login(config.token)
   .then(() => {
     processLogger.ok('看起來已經登入至 Discord 機器人了!')
     botLogger.info("正在等待事件 'ready' ...")

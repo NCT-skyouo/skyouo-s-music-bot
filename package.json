@@ -25,7 +25,7 @@
     "sync-mysql": "^3.0.1",
     "time-stamp": "^2.2.0",
     "youtube-dl-wrap": "1.1.2",
-    "ytdl-core": "4.1.0",
+    "ytdl-core": "4.1.1",
     "ytpl": "^1.0.1",
     "ytsr": "github:TimeForANinja/node-ytsr#wip-api-adjustments"
   },

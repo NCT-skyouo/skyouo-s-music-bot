@@ -26,7 +26,7 @@
     "time-stamp": "^2.2.0",
     "youtube-dl-wrap": "1.1.2",
     "ytdl-core": "4.1.1",
-    "ytpl": "^1.0.1",
+    "ytpl": "github:TimeForANinja/node-ytpl#wip-api-adjustments",
     "ytsr": "github:TimeForANinja/node-ytsr#wip-api-adjustments"
   },
   "scripts": {

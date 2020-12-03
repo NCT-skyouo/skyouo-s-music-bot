@@ -1,9 +1,9 @@
 const major = '0'
 var minor = '5'
-const patch = '0'
+const patch = '1'
 const commit = '0'
 const version = `v5.${minor}.${patch}-c${commit}`
-const codename = `Shu`
+const codename = `WindSaga`
 global["v5"] = { version: version, codename: codename }
 const config = require('./config/config.json')
 const fetch = require('node-fetch')

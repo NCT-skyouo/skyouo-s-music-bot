@@ -1,9 +1,9 @@
 {
   "latest": {
     "major": "0",
-    "minor": "4",
-    "patch": "0",
+    "minor": "5",
+    "patch": "1",
     "commit": "0",
-    "update_message": "更新 previous, jump 指令修復"
+    "update_message": "hotfix: 更新 ytdl-core 從 4.1.1 至 4.1.2 以解決播放問題."
   }
 }

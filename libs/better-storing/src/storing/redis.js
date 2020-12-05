@@ -1,10 +1,10 @@
 const Redis = require('ioredis');
 
 class redis {
-	constructor(name, opt={}) {
-		this.name = name;
+  constructor(name, opt = {}) {
+    this.name = name;
 
-		this.redis = new Redis(opt);
+    this.redis = new Redis(opt);
 
     this.namespace = `namespace:${this.name}`
 
@@ -14,25 +14,25 @@ class redis {
 
     this.opt.endMiddle = this.opt.endMiddle || (n => n)
 
-		this.redis.on('error', err => console.error(`[REDIS] ${err.toString()}`));
+    this.redis.on('error', err => console.error(`[REDIS] ${err.toString()}`));
 
     if (opt.leave_on_exit) {
       process.on("exit", this.disconnect)
     }
-	}
+  }
 
-	async get(k) {
-		var v = await this.redis.get(k)
-		return this.opt.endMiddle(v);
-	}
+  async get(k) {
+    var v = await this.redis.get(k)
+    return this.opt.endMiddle(v);
+  }
 
-	async set(key, value) {
-		return await this.redis.set(key, this.opt.startMiddle(value));
-	}
+  async set(key, value) {
+    return await this.redis.set(key, this.opt.startMiddle(value));
+  }
 
-	remove(key) {
-		return this.redis.del(key)
-	}
+  remove(key) {
+    return this.redis.del(key)
+  }
 
   async add(k, v) {
     await this.set(k, (await this.get(k)) + v)
@@ -53,10 +53,10 @@ class redis {
     return all.hasOwnProperty(k)
   }
 
-	async all() {
+  async all() {
     var allres = await this.redis.keys('*')
     allres = allres.filter(item => item !== this.namespace)
-    var res = await Promise.all(allres.map(async item => { return { name: item, value: await this.get(item) }}))
+    var res = await Promise.all(allres.map(async item => { return { name: item, value: await this.get(item) } }))
     var items = {}
     res.map(a => items[a.name] = a.value)
     return items

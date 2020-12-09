@@ -1,0 +1,144 @@
+{
+  "762627112867725403": {
+    "dj": {
+      "enable": true,
+      "list": [],
+      "people": [
+        "607134057226174464"
+      ]
+    },
+    "premium": {
+      "enable": true
+    },
+    "prefix": {
+      "value": null
+    },
+    "djonly": {
+      "enable": false
+    },
+    "maxqueue": {
+      "enable": false,
+      "value": 1000
+    }
+  },
+  "688576712656683105": {
+    "dj": {
+      "enable": false,
+      "list": [],
+      "people": []
+    },
+    "premium": {
+      "enable": true
+    },
+    "prefix": {
+      "value": null
+    },
+    "djonly": {
+      "enable": false
+    },
+    "maxqueue": {
+      "enable": false,
+      "value": 1000
+    }
+  },
+  "713042863033810976": {
+    "dj": {
+      "enable": false,
+      "list": [],
+      "people": []
+    },
+    "premium": {
+      "enable": false
+    },
+    "prefix": {
+      "value": null
+    },
+    "djonly": {
+      "enable": false
+    },
+    "maxqueue": {
+      "enable": false,
+      "value": 1000
+    }
+  },
+  "731161303024140299": {
+    "dj": {
+      "enable": false,
+      "list": [],
+      "people": []
+    },
+    "premium": {
+      "enable": false
+    },
+    "prefix": {
+      "value": null
+    },
+    "djonly": {
+      "enable": false
+    },
+    "maxqueue": {
+      "enable": false,
+      "value": 1000
+    }
+  },
+  "774273212748922882": {
+    "dj": {
+      "enable": false,
+      "list": [],
+      "people": []
+    },
+    "premium": {
+      "enable": false
+    },
+    "prefix": {
+      "value": null
+    },
+    "djonly": {
+      "enable": false
+    },
+    "maxqueue": {
+      "enable": false,
+      "value": 1000
+    }
+  },
+  "602454490624425984": {
+    "dj": {
+      "enable": false,
+      "list": [],
+      "people": []
+    },
+    "premium": {
+      "enable": false
+    },
+    "prefix": {
+      "value": null
+    },
+    "djonly": {
+      "enable": false
+    },
+    "maxqueue": {
+      "enable": false,
+      "value": 1000
+    }
+  },
+  "647082745352290344": {
+    "dj": {
+      "enable": false,
+      "list": [],
+      "people": []
+    },
+    "premium": {
+      "enable": false
+    },
+    "prefix": {
+      "value": null
+    },
+    "djonly": {
+      "enable": false
+    },
+    "maxqueue": {
+      "enable": false,
+      "value": 1000
+    }
+  }
+}

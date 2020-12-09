@@ -1,0 +1,45 @@
+{
+  "name": "skyouo-s-music-core",
+  "version": "5.0.3",
+  "dependencies": {
+    "@discordjs/opus": "0.3.3",
+    "chalk": "^4.1.0",
+    "cheerio": "1.0.0-rc.3",
+    "compression": "^1.7.4",
+    "discord-ytdl-core": "^5.0.0",
+    "discord.js": "12.4.1",
+    "express": "^4.17.1",
+    "express-static-gzip": "^2.1.0",
+    "ffmpeg-static": "4.2.7",
+    "ioredis": "^4.19.2",
+    "jquery": "^3.5.1",
+    "moment": "^2.29.1",
+    "node-fetch": "^2.6.1",
+    "node-sql-2": "github:TokyoFarmer/node-sql-2",
+    "pidusage": "^2.0.21",
+    "quickmongo": "^2.0.6",
+    "simple-youtube-api": "^5.2.1",
+    "socket.io": "^3.0.3",
+    "spotify-url-info": "^2.2.0",
+    "sql": "TokyoFarmer/node-sql-2",
+    "sync-mysql": "^3.0.1",
+    "time-stamp": "^2.2.0",
+    "youtube-dl": "https://github.com/skick1234/node-youtube-dl.git",
+    "youtube-dl-wrap": "^2.0.0",
+    "ytdl-core": "4.1.0",
+    "ytpl": "github:TimeForANinja/node-ytpl#wip-api-adjustments",
+    "ytsr": "github:TimeForANinja/node-ytsr#wip-api-adjustments"
+  },
+  "scripts": {
+    "start": "node --expose_gc bootstrap.js"
+  },
+  "devDependencies": {
+    "standard": "^16.0.3"
+  },
+  "standard": {
+    "ignore": [
+      "libs/*",
+      "libs/*/*"
+    ]
+  }
+}

@@ -11,7 +11,7 @@
     "express": "^4.17.1",
     "express-static-gzip": "^2.1.0",
     "ffmpeg-static": "4.2.7",
-    "ioredis": "^4.19.2",
+    "ioredis": "^4.19.3",
     "jquery": "^3.5.1",
     "moment": "^2.29.1",
     "node-fetch": "^2.6.1",

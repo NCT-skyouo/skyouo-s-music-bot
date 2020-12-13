@@ -44,7 +44,7 @@ class Track {
          * The Youtube URL of the track
          * @type {string}
          */
-    this.url = videoData.link
+    this.url = videoData.url
     /**
          * The video duration (formatted).
          * @type {string}
@@ -59,7 +59,7 @@ class Track {
          * The video thumbnail
          * @type {string}
          */
-    this.thumbnail = videoData.thumbnail
+    this.thumbnail = videoData.bestThumbnail.url
     /**
          * The video views
          * @type {?number}

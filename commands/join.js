@@ -6,9 +6,6 @@ module.exports = {
     const { player, MessageEmbed, config, isDJPerm } = bot
     try {
       if (!player.isPlaying(msg.guild.id)) { throw new Error('目前沒有正在播放的歌曲!') }
-      if (!msg.member.voice.channel) {
-        throw new Error('您尚未加入任何一個語音頻道!')
-      }
       msg.member.voice.channel.join()
       return msg.channel.send(
         new MessageEmbed()

@@ -26,7 +26,7 @@
     "time-stamp": "^2.2.0",
     "youtube-dl": "https://github.com/skick1234/node-youtube-dl.git",
     "youtube-dl-wrap": "^2.0.0",
-    "ytdl-core": "4.1.4",
+    "ytdl-core": "4.2.1",
     "ytpl": "github:TimeForANinja/node-ytpl#wip-api-adjustments",
     "ytsr": "github:TimeForANinja/node-ytsr#wip-api-adjustments"
   },

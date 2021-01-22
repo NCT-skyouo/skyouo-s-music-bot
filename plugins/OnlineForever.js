@@ -18,7 +18,7 @@ module.exports = {
     }
     onLoad() {
       var fetch = require("node-fetch")
-      if (!bot.config.web.enable) {
+      if (!this.bot.config.web.enable) {
         this.logger.info("已偵測到您關閉了 dashboard, 所以不會啟動該插件!!")
         return
       }

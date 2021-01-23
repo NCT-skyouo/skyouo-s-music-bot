@@ -25,7 +25,7 @@
     "time-stamp": "^2.2.0",
     "ytdl-core": "^4.4.3",
     "ytpl": "2.0.4",
-    "ytsr": "3.2.1"
+    "ytsr": "3.2.3"
   },
   "scripts": {
     "start": "node --expose_gc bootstrap.js"

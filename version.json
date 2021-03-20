@@ -1,9 +1,9 @@
 {
   "latest": {
     "major": "0",
-    "minor": "4",
+    "minor": "7",
     "patch": "0",
     "commit": "0",
-    "update_message": "更新 previous, jump 指令修復"
+    "update_message": "更新指令"
   }
 }

@@ -15,7 +15,7 @@
   "searchProvider": "Scraping",
   "APIKEY": [""],
   "web": {
-    "enable": true,
+    "enable": false,
     "port": 3000,
     "url": ""
   },

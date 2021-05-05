@@ -6,7 +6,7 @@
     "chalk": "^4.1.0",
     "cheerio": "1.0.0-rc.3",
     "compression": "^1.7.4",
-    "discord-ytdl-core": "^5.0.0",
+    "discord-ytdl-core": "^5.0.3",
     "discord.js": "12.5.1",
     "express": "^4.17.1",
     "express-static-gzip": "^2.1.1",

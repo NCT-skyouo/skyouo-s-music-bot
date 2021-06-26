@@ -23,7 +23,7 @@
     "sql": "TokyoFarmer/node-sql-2",
     "sync-mysql": "^3.0.1",
     "time-stamp": "^2.2.0",
-    "ytdl-core": "^4.5.0",
+    "ytdl-core": "^4.8.2",
     "ytpl": "2.0.5",
     "ytsr": "3.2.4"
   },

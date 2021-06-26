@@ -19,7 +19,7 @@
     "quickmongo": "^2.0.6",
     "simple-youtube-api": "^5.2.1",
     "socket.io": "^3.1.1",
-    "spotify-url-info": "^2.2.0",
+    "spotify-url-info": "^2.2.3",
     "sql": "TokyoFarmer/node-sql-2",
     "sync-mysql": "^3.0.1",
     "time-stamp": "^2.2.0",

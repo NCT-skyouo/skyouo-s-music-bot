@@ -24,7 +24,7 @@
     "sync-mysql": "^3.0.1",
     "time-stamp": "^2.2.0",
     "ytdl-core": "^4.5.0",
-    "ytpl": "2.0.5",
+    "ytpl": "2.2.3",
     "ytsr": "3.2.4"
   },
   "scripts": {

@@ -2,17 +2,16 @@
   "name": "skyouo-s-music-core",
   "version": "5.0.3",
   "dependencies": {
-    "@discordjs/opus": "0.5.0",
-    "chalk": "^4.1.0",
-    "cheerio": "1.0.0-rc.3",
+    "@discordjs/opus": "0.6.0",
+    "chalk": "^4.1.1",
+    "cheerio": "1.0.0-rc.10",
     "compression": "^1.7.4",
     "discord-ytdl-core": "^5.0.0",
-    "discord.js": "12.5.1",
+    "discord.js": "12.5.3",
     "express": "^4.17.1",
     "express-static-gzip": "^2.1.1",
     "ffmpeg-static": "4.4.0",
-    "ioredis": "^4.19.2",
-    "jquery": "^3.5.1",
+    "ioredis": "^4.27.8",
     "moment": "^2.29.1",
     "node-fetch": "^2.6.1",
     "pidusage": "^2.0.21",
@@ -23,9 +22,9 @@
     "sql": "TokyoFarmer/node-sql-2",
     "sync-mysql": "^3.0.1",
     "time-stamp": "^2.2.0",
-    "ytdl-core": "^4.5.0",
-    "ytpl": "2.0.5",
-    "ytsr": "3.2.4"
+    "ytdl-core": "^4.9.1",
+    "ytpl": "2.2.3",
+    "ytsr": "3.5.3"
   },
   "scripts": {
     "start": "node --expose_gc bootstrap.js"

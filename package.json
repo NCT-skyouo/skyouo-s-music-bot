@@ -13,7 +13,7 @@
     "ffmpeg-static": "4.4.0",
     "ioredis": "^4.27.8",
     "moment": "^2.29.1",
-    "node-fetch": "^2.6.1",
+    "node-fetch": "^3.0.0",
     "pidusage": "^2.0.21",
     "quickmongo": "^2.0.6",
     "simple-youtube-api": "^5.2.1",

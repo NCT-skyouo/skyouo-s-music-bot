@@ -297,7 +297,7 @@ class Player extends EventEmitter {
       this.extractor.searchTrack(query, { apiKEYs: this.apiKEYs, useAPI: this.useAPI }).then((tracks) => {
         if (Array.isArray(tracks)) {
           if (tracks.length === 0) return reject(new Error('No results'))
-          if (!allResults) {
+          if (!allResults && !tracks[0].fromPlaylist) {
             return resolve([tracks[0]])
           } else {
             return resolve(tracks)
@@ -553,14 +553,15 @@ class Player extends EventEmitter {
       // Get guild queue
       const queue = this.queues.find((g) => g.guildID === guildID)
       if (!queue) return reject(new Error('Not playing'))
+      // clear queue
+      queue.tracks = []
       // Stop the dispatcher
       queue.audioPlayer.stop(true)
       queue.autoplay = false
       queue.queueLoopMode = false
       queue.repeatMode = false
       queue.stopped = true
-      queue.tracks = []
-      queue.destory()
+      queue.destroy()
       // Resolve
       resolve()
     })
@@ -1191,7 +1192,7 @@ class Player extends EventEmitter {
       queue.process(updateFilter, seek, encoderArgsFilters, this).then(resolve)
       const stateChange = (oldState, newState) => {
         if (newState.status === AudioPlayerStatus.Idle && oldState.status !== AudioPlayerStatus.Idle && !queue.queueLock) {
-          queue.destory()
+          queue.destroy()
           // prevent memory leaks
           queue.removeListener('stateChange', stateChange)
           return this._playTrack(queue.guildID, false)

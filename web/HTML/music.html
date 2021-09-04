@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<!-- Code By Webdevtrick ( https://webdevtrick.com ) -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Music Control</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+  <!-- <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <link rel="stylesheet" href="/main.css">
+  <link rel="stylesheet" href="/notify.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+  <link rel="stylesheet" href="/player.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0-beta1/css/all.css">
+  <meta name="charset" charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+</head>
+
+<body>
+
+  <body class="hero-anime" onLoad="checkdarkmode()">
+
+    <div class="navigation-wrap bg-light start-header start-style">
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <nav class="navbar navbar-expand-lg navbar-light">
+              <div class="container-fluid">
+                <ul class="navbar-nav">
+                  <a class="navbar-brand">
+                    <img
+                      src="https://cdn.discordapp.com/avatars/744117844236828713/1de3195c6a2b10d9b9cff5a1d9d593b0.webp?size=4096"
+                      id="avatar" alt="Robots avatar" class="rounded-circle">
+                  </a>
+                </ul>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                  aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse justify-content-md-center collapse" id="navbarScroll">
+                  <ul class="navbar-nav ms-auto">
+                    <li class="nav-item me-auto ps-4 ps-md-0 ms-0 ms-md-4 disabled">
+                      <a class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item ps-4 ps-md-0 ms-0 ms-md-4">
+                      <a class="nav-link" href="https://github.com/NCT-skyouo/skyouo-s-music-bot/"
+                        target="_blank">Github</a>
+                    </li>
+                    <li class="nav-item ps-4 ps-md-0 ms-0 ms-md-4">
+                      <a class="nav-link" href="https://bots.skyouo.tech" target="_blank">Botlist</a>
+                    </li>
+                    <li class="nav-item ps-4 ps-md-0 ms-0 ms-md-4 dropdown">
+                      <a class="nav-link dropdown-toggle navbar-outline-light" data-toggle="dropdown" href="#"
+                        role="button" aria-haspopup="true" aria-expanded="false">Search</a>
+                      <div class="dropdown-menu">
+                        <a class="dropdown-item" href="#youtube">YouTube</a>
+                        <a class="dropdown-item" href="#lbry">LBRY</a>
+                        <a class="dropdown-item" href="#tiktok">TikTok</a>
+                        <a class="dropdown-item" href="#bilibili">BiliBili</a>
+                        <a class="dropdown-item" href="#spotify">Spotify</a>
+                        <a class="dropdown-item" href="#netease">Netease</a>
+                      </div>
+                    </li>
+                    <li class="nav-item ps-4 ps-md-0 ms-0 ms-md-4">
+                      <a class="nav-link" href="https://www.paypal.me/nctskyouo" target="_blank">Sponser</a>
+                    </li>
+                    <li class="nav-item ps-4 ps-md-0 ms-0 ms-md-4">
+                      <a class="nav-link" href="https://discord.gg/xDhRW9u5Bh" target="_blank">Contact</a>
+                    </li>
+                    <div id="login"></div>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+    <br><br><br><br><br><br>
+    <div class="my-5">
+      <div class="container">
+        <div class="row">
+          <h1 class="my-2" id="botname">${bot.name} Music Control </h1>
+          <br>
+          <br>    
+          <br>
+          <br>    
+          <form id="search-form">
+            <div class="input-group mb-3 mx-auto">
+              <button class="btn btn-outline-secondary dropdown-toggle" id="search-type" type="button" data-bs-toggle="dropdown" aria-expanded="false">YouTube <i class="fas fa-caret-down"></i></button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">YouTube</a></li>
+                <!-- <li><a class="dropdown-item" href="#">Spotify</a></li> -->
+                <li><a class="dropdown-item" href="#">Soundcloud</a></li>
+                <li><a class="dropdown-item" href="#">Netease Music</a></li>
+                <li><a class="dropdown-item" href="#">BiliBili</a></li>
+                <!-- <li><a class="dropdown-item" href="#">TikTok</a></li> -->
+                <li><a class="dropdown-item" href="#">LBRY</a></li>
+              </ul>            
+              <input type="text" class="control" id="search-query" placeholder="Music Search" aria-label="Music Search" 
+              aria-describedby="button-addon2" autocomplete="off" spellcheck="false" name="q" required>
+              <div class="input-group-append">
+                <button class="submit" type="submit" id="button-addon2">
+                  <span class="submit-color">Search</span>
+                </button>
+              </div>
+            </div>
+          </form>
+          <p>Change theme</p>
+          <div class="mt-5">
+            <div class="container">
+              <div class="row">
+                <div class="col-12">
+                  <div id="switch">
+                    <div id="circle"></div>
+                  </div>
+                </div>
+              </div>
+            </div><br><br><br><br>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="my-4">
+      <div class="container">
+        <div class="row">
+          <table class="table caption-top">
+            <center>
+              <h3>Top 10 music (YouTube)</h3>
+            </center><br>
+            <div id="dweawedwaed"></div>
+            <thead id="top10listpls">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Duration</th>
+                <th scope="col">Description</th>
+                <th scope="col">Views</th>
+              </tr>
+            </thead>
+            <tbody id="yttop10"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <div class="player"></div>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+    integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js"
+    integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT"
+    crossorigin="anonymous"></script>
+  <script src="/utils.js"></script>
+  <script src="/search.js" crossorigin="anonymous"></script>
+  <script>// Code By Webdevtrick ( https://webdevtrick.com )
+    (function ($) {
+      "use strict";
+
+      $(function () {
+        var header = $(".start-style");
+        $(window).scroll(function () {
+          var scroll = $(window).scrollTop();
+
+          if (scroll >= 10) {
+            header.removeClass('start-style').addClass("scroll-on");
+          } else {
+            header.removeClass("scroll-on").addClass('start-style');
+          }
+        });
+      });
+
+      //Animation
+
+      $(document).ready(function () {
+        $('body.hero-anime').removeClass('hero-anime');
+      });
+
+      //Menu On Hover
+
+      $('body').on('mouseenter mouseleave', '.nav-item', function (e) {
+        if ($(window).width() > 750) {
+          var _d = $(e.target).closest('.nav-item'); _d.addClass('show');
+          setTimeout(function () {
+            _d[_d.is(':hover') ? 'addClass' : 'removeClass']('show');
+          }, 1);
+        }
+      });
+
+      //Switch light/dark
+
+      $("#switch").on('click', function () {
+        if ($("body").hasClass("dark")) {
+          $("body").removeClass("dark");
+          $("#switch").removeClass("switched");
+          setCookie("darkmode", false)
+        } else {
+          $("body").addClass("dark");
+          $("#switch").addClass("switched");
+          setCookie("darkmode", true)
+        }
+      });
+    })(jQuery);</script>
+  <script>
+    // todo: let code readable
+    async function checkdarkmode() {
+      var check = new URLSearchParams(window.location.search)
+      if (check.get("q")) {
+        search();
+      };
+      var secwe = getCookie("sec");
+      if (secwe) {
+        var xreer = await fetch(`/oauth2`, { body: JSON.stringify({ key: secwe }), method: "POST", headers: { 'content-type': 'application/json' } });
+        if (xreer.status === 404) {
+          var html = `
+         <div class="ps-4 ps-md-0 ms-0 ms-md-4"><a href="/auth" class="btn btn-outline-warning " >Login</a></div>`
+          document.getElementById('login').insertAdjacentHTML("beforeend", html);
+        } else {
+          var xdfewefw = await xreer.json();
+          if (!xdfewefw['username']) window.location.replace('/logout');
+          var html = `
+          <li class="nav-item ps-4 ps-md-0 ms-0 ms-md-4 dropdown">
+            <a class="nav-link dropdown-toggle navbar-outline-light" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            ${xdfewefw['username']}#${xdfewefw['discriminator']}
+            </a>
+	  		  	<div class="dropdown-menu">
+	  				  <a class="dropdown-item"  href="/logout">Logout</a>
+	  				</div>
+  				</li>`
+          document.getElementById('login').insertAdjacentHTML("beforeend", html);
+        }
+      } else {
+        var html = `<div class="ps-4 ps-md-0 ms-0 ms-md-4"><a href="/auth" class="btn btn-outline-warning"><i class="bi bi-discord"></i>&nbsp;&nbsp;Login</a></div>`;
+        document.getElementById('login').insertAdjacentHTML("beforeend", html);
+        $('.dropdown-toggle').attr('disabled', 'disabled')
+        $('.control').attr('disabled', 'disabled')
+        $('.submit').attr('disabled', 'disabled')
+        $('.submit-color').attr('style', 'color: #888;')
+
+        $('.control').attr('placeholder', '您必須要先登入才能使用該功能!')
+      };
+      var xd = getCookie("darkmode");
+      if (xd === "true") {
+        $("body").addClass("dark");
+        $("#switch").addClass("switched");
+      };
+      await loadMore();
+    };
+    async function loadMore(uwu) {
+      var abc = 0;
+      var res = await fetch(`/api/trending`);
+      console.log(res)
+      if (res.status === 200) {
+        var json = await res.json();
+        if (!json || json.length === 0) {
+          var html = `
+          <center><p>Error while fetching data...</p></center>`;
+          document.getElementById('top10listpls').remove();
+          document.getElementById('dweawedwaed').insertAdjacentHTML("beforeend", html)
+        } else {
+          json.sort(function (a, b) { return b.viewCount - a.viewCount });
+          json.forEach(function (bot) {
+            abc++;
+            var html = `
+            <tr>
+              <th scope="row">${abc}</th>
+              <td><a href="https://www.youtube.com/watch?v=${bot.videoId}">${bot.title}</a></td>
+              <td>${bot.timeText}</td>
+              <td>${bot.description}</td>
+              <td>${bot.viewCount}</td>
+            </tr>`
+            document.getElementById('yttop10').insertAdjacentHTML("beforeend", html)
+          })
+        }
+      } else {
+        var html = `
+        <center><p>Server Code: ${res.status}</p></center>
+        `;
+        document.getElementById('top10listpls').remove();
+        document.getElementById('dweawedwaed').insertAdjacentHTML("beforeend", html)
+      }
+    };
+  </script>
+  <script src="https://rawgit.com/leizongmin/js-xss/master/dist/xss.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/notify.min.js"></script>
+  <script src="/form.js"></script>
+  <script src="/player.js"></script>
+  <script src="/notify-index.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+{
+  "//注釋1": "如果有不會的問題可以到 https://discord.gg/F3gSD5C",
+  "//注釋2": "Bug 回報到 https://github.com/NCT-skyouo/skyouo-s-music-bot/issues 喔",
+  "token": "",
+  "download": true,
+  "debug": false,
+  "help": true,
+  "ignore": [],
+  "footer": "Kristen (v6.0.0 Final Beta \"Aurora\")",
+  "prefix": "p!",
+  "ownerid": "",
+  "disableMentionForPrefix": false,
+  "mentionForPrefixTitle": "歡迎來到 v6",
+  "fetchAllMembers": false,
+  "searchProvider": "Scraping",
+  "APIKEY": [""],
+  "offical_server": "https://discord.gg/F3gSD5C",
+  "genius": {
+    "key": ""
+  },
+  "web": {
+    "enable": true,
+    "url": "http://localhost:3000",
+    "clientSecret": "",
+    "port": 3000
+  },
+  "gmt": {
+    "//offset 8 = +0800, -2 = -0200": "",
+    "offset": 8
+  },
+  "store": {
+    "configDB": {
+      "type": "memory",
+      "json": {
+        "path": "./config/databases",
+        "caching": true,
+        "noRealTimeUpdate": false
+      },
+      "memory": {},
+      "mysql": {
+        "host": "localhost",
+        "user": "root",
+        "password": "password"
+      },
+      "mongo": {
+        "url": "mongodb+srv://username:password@hostname/databaseName?retryWrites=true&w=majority"
+      },
+      "redis": {
+        "port": 6379,
+        "host": "localhost",
+        "family": 4,
+        "password": "password"
+      },
+      "replit": {}
+    },
+    "songsDB": {
+      "type": "memory",
+      "json": {
+        "path": "./config/databases",
+        "caching": true,
+        "noRealTimeUpdate": false
+      },
+      "memory": {},
+      "mysql": {
+        "host": "localhost",
+        "user": "root",
+        "password": "password"
+      },
+      "mongo": {
+        "url": "mongodb+srv://username:password@hostname/databaseName?retryWrites=true&w=majority"
+      },
+      "redis": {
+        "port": 6379,
+        "host": "localhost",
+        "family": 4,
+        "password": "password"
+      },
+      "replit": {}
+    }, 
+    "cachesDB": {
+      "type": "memory",
+      "json": {
+        "path": "./config/databases",
+        "caching": true,
+        "noRealTimeUpdate": false
+      },
+      "memory": {},
+      "mysql": {
+        "host": "localhost",
+        "user": "root",
+        "password": "password"
+      },
+      "mongo": {
+        "url": "mongodb+srv://username:password@hostname/databaseName?retryWrites=true&w=majority"
+      },
+      "redis": {
+        "port": 6379,
+        "host": "localhost",
+        "family": 4,
+        "password": "password"
+      },
+      "replit": {}
+    }
+  }, 
+  "defaultconfig": {
+    "blacklist": {
+      "enable": false,
+      "channels": []
+    },
+    "dj": {
+      "enable": false,
+      "list": [],
+      "people": []
+    },
+    "premium": {
+      "enable": false
+    },
+    "prefix": {
+      "guild": null,
+      "personal": {}
+    },
+    "djonly": {
+      "enable": false
+    },
+    "maxqueue": {
+      "enable": false,
+      "value": 1000
+    },
+    "notifysongs": {
+      "enable": true
+    },
+    "languages": {
+      "guild": "zh-tw",
+      "personal": {}
+    },
+    "preview": {
+      "enable": false
+    }
+  },
+  "pluginConfigs": {
+    "default": {
+      "allowAll": false,
+      "allowBotAccess": false,
+      "allowImportantConfigsAccess": false,
+      "allowClientUserAccess": false,
+      "allowDatabaseAccess": false,
+      "allowCacheAccess": false,
+      "allowCommandAccess": false,
+      "allowPlayerAccess": false,
+      "allowPluginAccess": false,
+      "allowPluginLoaderAccess": false,
+      "allowListenEvents": false,
+      "allowEmitEvents": false,
+      "allowRevorkEvents": false
+    },
+    "BetterHelp": {
+      "allowImportantConfigsAccess": true,
+      "allowCommandAccess": true
+    },
+    "BetterLyrics": {
+      "allowCommandAccess": true
+    },
+    "CLI": {
+      "allowAll": true
+    },
+    "ContextMenu": {
+      "allowImportantConfigsAccess": true,
+      "allowClientUserAccess": true,
+      "allowListenEvents": true
+    },
+    "DiscordRPC": {
+      "allowImportantConfigsAccess": true,
+      "allowCacheAccess": true,
+      "allowPlayerAccess": true
+    },
+    "DumpMe": {
+      "allowCommandAccess": true
+    },
+    "DynamicStatus": {
+      "allowImportantConfigsAccess": true, 
+      "allowCacheAccess": true, 
+      "allowClientUserAccess": true,
+      "allowListenEvents": true,
+      "allowPlayerAccess": true
+    },
+    "LogInviter": {
+      "allowListenEvents": true
+    },
+    "OnlineForever": {
+      "allowImportantConfigsAccess": true
+    },
+    "SlashCommands": {
+      "allowImportantConfigsAccess": true,
+      "allowClientUserAccess": true,
+      "allowListenEvents": true,
+      "allowCommandAccess": true
+    }
+  }
+}

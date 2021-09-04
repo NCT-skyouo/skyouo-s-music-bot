@@ -1,0 +1,242 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&subset=devanagari,latin-ext');
+
+body{
+  font-family: 'Poppins', sans-serif;
+	font-size: 16px;
+	line-height: 24px;
+	font-weight: 400;
+	color: #212112;
+  background-size: 7%;
+	background-color: #fff;
+	overflow-x: hidden;
+  transition: all 200ms linear;
+}
+input {
+  color: #212121;
+  background-color: #fff;
+}
+input.control {
+  position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  width: 1%;
+  margin-bottom: 0;
+  display: block;
+  height: calc(2.25rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  background-clip: padding-box;
+  border: 1px solid #212112;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition-delay: 1700ms;
+}
+
+button {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid #212112;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  color: #212112;
+  background-color: transparent;
+}
+
+.search-item {
+  color: #212121;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrapl;
+  justify-content: space-around;
+  align-items: stretch;
+}
+
+h1.title{
+  font-weight: 500;
+  font-size: 20px;
+  color: black;
+}
+
+h3.description{
+  font-weight: 500;
+  font-size: 14px;
+  color: black;
+}
+
+div.aside {
+  flex: 1;
+}
+
+div.nav {
+  flex: 1;
+}
+
+div.article {
+  flex: 10;
+}
+
+form {
+  justify-content: center;
+  vertical-align: middle;
+  text-align: center;
+  width: 75%;
+}
+
+div.rightttt {
+  justify-content: flex-end;
+  flex: 1;
+}
+
+.subtit {
+  color: #808A87;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.containers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#search {
+  display: flex;
+  flex: 1;
+}
+
+a {
+  text-decoration: none;
+}
+
+.xdd {
+  color: black;
+}
+
+hr{
+  border: 2px solid black;
+}
+
+body.dark{
+	color: #fff;
+	background-color: #1f2029;
+}
+
+body.dark input {
+  color: #fff;
+  background-color: #212121;
+}
+
+body.dark hr{
+  border: 2px solid gold;
+}
+
+body.dark .xdd {
+  color: white;
+}
+
+.control-button {
+  display: flex;
+  justify-content: right;
+  align-items: right;
+}
+
+body.dark h1.title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-weight: 500;
+  font-size: 20px;
+  color: white;
+}
+
+body.dark h3.description{
+  font-weight: 500;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+body.dark input.control {
+  position: relative;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  width: 1%;
+  margin-bottom: 0;
+  display: block;
+  height: calc(2.25rem + 2px);
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #fff;
+  background-color: #212121;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: .25rem;
+  transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  transition-delay: 1700ms;
+}
+
+body.dark button {
+  display: inline-block;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid #fff;
+  padding: .375rem .75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: .25rem;
+  color: gold;
+  background-color: transparent;
+}
+
+@media only screen and (max-width: 990px) { 
+  p.title{
+    font-size: 38px;
+    color: white;
+    margin-bottom: 13px;
+  }
+
+  h3.description{
+    font-size: 26px;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 13px;
+  }
+}
+
+::selection {
+	color: #fff;
+	background-color: #ff4242;
+}
+::-moz-selection {
+	color: #fff;
+	background-color: #ff4242;
+}
+::-webkit-scrollbar {
+    background: transparent;
+    width: 5px;
+    z-index: 11;
+}
+::-webkit-scrollbar-corner {
+    background: rgba(42, 5, 78, 0.342);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--dark);
+    border-radius: 5px;
+    z-index: 11;
+}

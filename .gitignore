@@ -1,0 +1,23 @@
+# Replit
+.replit
+
+# shell scripts
+*.sh
+*.bat
+
+# youtube-dl ignore download
+.ignore_ytdl_patch_download
+
+# config files
+userdt.json
+user.json
+config/config.json
+
+# package files
+.upm/
+node_modules/
+package-lock.json
+
+# other
+v6.zip
+tmp.json

@@ -1,0 +1,63 @@
+{
+  "688576712656683105": {
+    "dj": {
+      "enable": true,
+      "list": [],
+      "people": [
+        "582018951903707136"
+      ]
+    },
+    "premium": {
+      "enable": true
+    },
+    "prefix": {
+      "guild": null,
+      "personal": {
+        "853080735661424640": "p!"
+      }
+    },
+    "djonly": {
+      "enable": false
+    },
+    "maxqueue": {
+      "enable": false,
+      "value": 1000
+    },
+    "notifysongs": {
+      "enable": false
+    },
+    "languages": {
+      "guild": "zh-tw",
+      "personal": {
+        "599923291968241666": "en"
+      }
+    }
+  },
+  "741972580860428349": {
+    "dj": {
+      "enable": false,
+      "list": [],
+      "people": []
+    },
+    "premium": {
+      "enable": false
+    },
+    "prefix": {
+      "value": null
+    },
+    "djonly": {
+      "enable": false
+    },
+    "maxqueue": {
+      "enable": false,
+      "value": 1000
+    },
+    "notifysongs": {
+      "enable": true
+    },
+    "languages": {
+      "guild": "zh-tw",
+      "personal": {}
+    }
+  }
+}

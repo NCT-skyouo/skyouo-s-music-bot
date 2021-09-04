@@ -1,0 +1,128 @@
+/*
+ * notify-bootstrap 
+ * v1.0.0
+ * https://github.com/the-muda-organization/notify-bootstrap
+ * MIT License
+ */
+
+/* main container for stacking toasts */
+.toast-container {
+    width: 100%;
+    max-width: 400px;
+    position: fixed;
+    z-index: 1055;
+    padding: 1rem;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+
+/* toast - ovverride from bootstrap */
+.toast {
+    width: 100%;
+    max-width: 400px; /* slightly bigger than bootstrap default 350px */
+    pointer-events: auto
+}
+
+/* toast - style for notify not affecting bootstrap toast */
+.toast[data-type] {
+    position: relative;
+    border: 0;
+    color: #f8f9fa;
+    background: linear-gradient(to bottom right, #4A4A4A, #2B2B2B);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .5);
+}
+
+/* toast content */
+.toast[data-type] .toast-content {
+    display: flex;
+    align-items: center;
+    padding-left: 1rem;
+}
+
+/* toast svg icon */
+.toast[data-type] .toast-icon svg {
+    width: 35px;
+    height: 35px;
+    display: block;
+}
+
+/* toast body - it contains title and message */
+.toast[data-type] .toast-body {
+    width: 100%;
+    padding-left: 1rem;
+    text-align: justify;
+}
+
+/* toast close button */
+.toast[data-type] .close {
+    position: absolute;
+    top: .35rem;
+    right: .35rem;
+    color: inherit;
+}
+
+.toast[data-type] .close:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* GENERAL */
+.toast[data-type="info"] {
+    background: linear-gradient(to bottom right, #007bff, #1d93d2)
+}
+
+.toast[data-type="warning"] {
+    background: linear-gradient(to bottom right, #FF9500, #FC0);
+    color: #343a40 !important
+}
+
+.toast[data-type="error"] {
+    background: linear-gradient(to bottom right, #FF2A68, #FF5E3A)
+}
+
+.toast[data-type="success"] {
+    background: linear-gradient(to bottom right, #28a745, #84b42d)
+}
+
+.toast[data-type="other"] {
+    background: linear-gradient(to bottom right, #4A4A4A, #2B2B2B)
+}
+
+/* BRANDS */
+.toast[data-type="facebook"] {
+    background: linear-gradient(to bottom right, #3B5998, #6d84b4)
+}
+
+.toast[data-type="github"] {
+    background: linear-gradient(to bottom right, #333, #373737)
+}
+
+.toast[data-type="instagram"] {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%)
+}
+
+.toast[data-type="linkedin"] {
+    background: linear-gradient(to bottom right, #0077B5, #00a0dc)
+}
+
+.toast[data-type="paypal"] {
+    background: linear-gradient(to bottom right, #003087, #009cde)
+}
+
+.toast[data-type="skype"] {
+    background: linear-gradient(to bottom right, #00aff0, #0078d7)
+}
+
+.toast[data-type="twitter"] {
+    background: linear-gradient(to bottom right, #1DA1F2, #0084b4)
+}
+
+.toast[data-type="wikipedia"] {
+    background: linear-gradient(to bottom right, #636466, #000)
+}
+
+.toast[data-type="youtube"] {
+    background: linear-gradient(to bottom right, #f00, #e62117)
+}

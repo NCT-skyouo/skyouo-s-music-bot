@@ -76,7 +76,7 @@ module.exports = {
                 )
                 .addField('歌曲時長', song.tracks[0].duration)
                 .addField('請求者', song.tracks[0].requestedBy)
-                .addField('清單長度', song.tracks.length)
+                .addField('清單長度', String(song.tracks.length))
                 .setFooter(config.footer, bot.user.displayAvatarURL())
             ]
           })

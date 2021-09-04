@@ -284,7 +284,7 @@ module.exports = {
                 .setColor('FFEE23')
                 .setImage(song.tracks[0].thumbnail)
                 .addField('請求者', song.tracks[0].requestedBy)
-                .addField('清單長度', song.tracks.length)
+                .addField('清單長度', String(song.tracks.length))
                 .setFooter(config.footer, bot.user.displayAvatarURL())
             ]
           })
@@ -296,7 +296,7 @@ module.exports = {
                 .setColor('FFEE23')
                 .setImage(song.tracks[0].thumbnail)
                 .addField('請求者', song.tracks[0].requestedBy)
-                .addField('歌單長度', song.tracks.length)
+                .addField('歌單長度', String(song.tracks.length))
                 .setFooter(config.footer, bot.user.displayAvatarURL())
             ]
           })

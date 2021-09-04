@@ -77,7 +77,7 @@ module.exports = {
                                 )
                                 .addField('Duration', song.tracks[0].duration)
                                 .addField('Requested by', song.tracks[0].requestedBy)
-                                .addField('Playlist length', song.tracks.length)
+                                .addField('Playlist length', String(song.tracks.length))
                                 .setFooter(config.footer, bot.user.displayAvatarURL())
                         ]
                     })
@@ -285,7 +285,7 @@ module.exports = {
                                 .setColor('FFEE23')
                                 .setImage(song.tracks[0].thumbnail)
                                 .addField('Requested by', song.tracks[0].requestedBy)
-                                .addField('Playlist length', song.tracks.length)
+                                .addField('Playlist length', String(song.tracks.length))
                                 .setFooter(config.footer, bot.user.displayAvatarURL())
                         ]
                     })

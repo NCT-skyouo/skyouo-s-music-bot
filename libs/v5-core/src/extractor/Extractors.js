@@ -13,11 +13,12 @@ const SoundCloudSong = require('./SoundCloudSong')
 const SoundCloudSongKW = require('./SoundCloudSongKeyword')
 const SoundCloudPlaylist = require('./SoundCloudPlaylist')
 const SpotifySong = require('./SpotifySong')
+const SpotifyPlaylist = require('./SpotifyPlaylist');
 const TiktokVideo = require('./TiktokVideo')
 const YoutubeVideo = require('./YoutubeVideo')
 const YoutubeVideoKW = require('./YoutubeVideoKeywords')
 const YoutubePlaylist = require('./YoutubePlaylist')
-const YoutubeRelated = require('./YoutubeRelated')
+const YoutubeRelated = require('./YoutubeRelated');
 
 module.exports = class Extractors {
     constructor() {
@@ -36,6 +37,7 @@ module.exports = class Extractors {
         this.register(new SoundCloudSongKW());
         this.register(new SoundCloudPlaylist());
         this.register(new SpotifySong());
+        this.register(new SpotifyPlaylist());
         this.register(new TiktokVideo());
         this.register(new YoutubeVideo());
         this.register(new YoutubeVideoKW());

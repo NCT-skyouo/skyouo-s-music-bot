@@ -249,7 +249,7 @@ class Queue extends EventEmitter {
     }
   }
 
-  destory() {
+  destroy() {
     this.additionalStreamTime = 0
     this.resource?.playStream?.destroy();
     this.resource?.playStream?.read();

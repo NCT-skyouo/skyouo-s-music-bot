@@ -7,6 +7,7 @@ const YABAW = new (require("../../../yabaw/index"))()
 module.exports = class BilibiliAnimeKeywordExtractor extends BaseExtractor {
   constructor(options) {
     super({ id: "bilibili-anime-keyword" });
+    this.playlist = true;
   }
 
   search(query, options) {

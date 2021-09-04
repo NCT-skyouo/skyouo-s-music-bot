@@ -9,6 +9,7 @@ const ytpl = require('ytpl')
 module.exports = class YoutubeVideoKeywordExtractor extends BaseExtractor {
     constructor(options) {
         super({ id: 'youtube-playlist' })
+        this.playlist = true;
     }
 
     search(query, options) {

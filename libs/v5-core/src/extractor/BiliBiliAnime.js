@@ -9,6 +9,7 @@ const YABAW = new (require("../../../yabaw/index"))()
 module.exports = class BilibiliAnimeExtractor extends BaseExtractor {
   constructor(options) {
     super({ id: "bilibili-anime" });
+    this.playlist = true;
   }
 
   search(query, options) {

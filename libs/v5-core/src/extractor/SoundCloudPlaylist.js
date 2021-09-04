@@ -8,6 +8,7 @@ module.exports = class SoundCloudPlaylistExtractor extends BaseExtractor {
     constructor(options) {
         super({ id: 'soundcloud-playlist' })
         this.client = new soundcloud.Client();
+        this.playlist = true;
     }
 
     search(query, options) {

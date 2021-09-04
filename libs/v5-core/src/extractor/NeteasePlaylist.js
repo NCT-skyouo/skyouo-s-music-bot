@@ -10,6 +10,7 @@ const nm = new NeteaseMusic();
 module.exports = class NeteaseSongExtractor extends BaseExtractor {
     constructor(options) {
         super({ id: 'netease-playlist' })
+        this.playlist = true;
     }
 
     search(query, options) {

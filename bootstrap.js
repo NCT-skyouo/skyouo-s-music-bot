@@ -3,7 +3,7 @@ var minor = '0'
 const patch = '0'
 const commit = '0'
 const version = `v${major}.${minor}.${patch} ${commit !== '0' ? ` Commit ${commit}` : ""}`
-const codename = `Aurora`
+const codename = `Mayday`
 
 global["v5"] = { version: version, codename: codename }
 var config = require('./config/config.json')

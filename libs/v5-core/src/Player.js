@@ -1146,21 +1146,51 @@ class Player extends EventEmitter {
      * @param {Discord.VoiceState} newState
      */
   _handleVoiceStateUpdate(oldState, newState) {
-    if (!this.options.leaveOnEmpty) return
-    // If the member leaves a voice channel
-    if (!oldState.channelId || newState.channelId) return
-    // Search for a queue for this channel
     const queue = this.queues.find((g) => g.voiceConnection.joinConfig.guildId === oldState.guild.id)
-    if (queue) {
+    if (!queue) return
+
+    if (oldState.channelId && newState.channelId && oldState.channelId !== newState.channelId) {
+      if (queue.voiceConnection) queue.voiceConnection.channel = newState.channel;
+    }
+
+    if (!oldState.member.id === newState.guild.me.id) return;
+
+    if (!oldState.channelId && newState.channelId) { // If the bot joins a voice channel
+      (newState.serverMute || !newState.serverMute) ? (() => {
+        newState.serverMute ? this.pause(queue.guildID) : this.resume(queue.guildID)
+      }) : void 0; // eslint-disable-line no-unused-expressions // What the fuck?
+
+      (newState.suppress || !newState.suppress) ? (() => {
+        newState.suppress ? (newState.guild.me.voice.setRequestToSpeak(true).catch(noop), this.pause(queue.guildID)) : this.resume(queue.guildID) // eslint-disable-line no-unused-expressions
+      })() : void 0;  // eslint-disable-line no-unused-expressions // What the fuck?
+    }
+
+    if (oldState.channelId === newState.channelId) { // If the bot changes its voice channel
+      oldState.serverMute != newState.serverMute ? (() => {
+        newState.serverMute ? this.pause(queue.guildID) : this.resume(queue.guildID)
+      }) : void 0; // eslint-disable-line no-unused-expressions // What the fuck?
+
+      oldState.suppress != newState.suppress ? (() => {
+        newState.suppress ? (newState.guild.me.voice.setRequestToSpeak(true).catch(noop), this.pause(queue.guildID)) : this.resume(queue.guildID) // eslint-disable-line no-unused-expressions
+      })() : void 0;  // eslint-disable-line no-unused-expressions // What the fuck?
+    }
+
+    if (!this.options.leaveOnEmpty) {
+      // If the member leaves a voice channel
+      if (!oldState.channelId || newState.channelId) return
       // If the channel is not empty
       if (this.client.channels.cache.get(queue.voiceConnection.joinConfig.channelId).members.size > 1) return
       // Disconnect from the voice channel
       // queue.voiceConnection.disconnect()
-      queue.voiceConnection.destroy()
-      // Delete the queue
-      this.queues = this.queues.filter((g) => g.guildID !== queue.guildID)
-      // Emit end event
-      queue.emit('channelEmpty')
+      setTimeout(() => {
+        if (this.client.channels.cache.get(queue.voiceConnection.joinConfig.channelId).members.size > 1) return;
+        // Destroy the voice connection
+        queue.destroy()
+        // Delete the queue
+        this.queues = this.queues.filter((g) => g.guildID !== queue.guildID)
+        // Emit end event
+        queue.emit('channelEmpty')
+      }, 7500)
     }
   }
 
@@ -1192,8 +1222,7 @@ class Player extends EventEmitter {
       queue.process(updateFilter, seek, encoderArgsFilters, this).then(resolve)
       const stateChange = (oldState, newState) => {
         if (newState.status === AudioPlayerStatus.Idle && oldState.status !== AudioPlayerStatus.Idle && !queue.queueLock) {
-          queue.destroy()
-          // prevent memory leaks
+          queue.destroy() // Destroy the queue
           queue.removeListener('stateChange', stateChange)
           return this._playTrack(queue.guildID, false)
         }

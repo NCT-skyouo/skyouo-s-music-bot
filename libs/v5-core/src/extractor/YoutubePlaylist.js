@@ -14,10 +14,9 @@ module.exports = class YoutubeVideoKeywordExtractor extends BaseExtractor {
 
     search(query, options) {
         return new Promise(async (resolve, reject) => {
-
+            const playlistID = await ytpl.getPlaylistID(query).catch(() => { })
             if (options.useAPI) {
                 let youtube = options.apiKEYs?.length ? new YouTube(options.apiKEYs[Math.floor(Math.random() * options.apiKEYs.length)]) : null
-                const playlistID = await ytpl.getPlaylistID(query).catch(() => { })
                 const playlist = await youtube.getPlaylistByID(playlistID).catch(() => { })
                 if (playlist) {
                     const videos = await playlist.getVideos()

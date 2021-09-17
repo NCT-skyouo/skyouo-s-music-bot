@@ -8,7 +8,7 @@ module.exports = {
   name: 'insert',
   category: 'music',
   description: '將您想播放的歌曲插入隊列中的第一個位置',
-  aliases: ['p'],
+  aliases: ['ins'],
   slash: new SlashCommandBuilder()
     .setName('insert')
     .setDescription('將您想播放的歌曲插入隊列中的第一個位置.')

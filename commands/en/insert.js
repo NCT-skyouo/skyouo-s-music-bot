@@ -8,7 +8,7 @@ module.exports = {
   name: 'insert',
   category: 'music',
   description: 'Insert a song to the front of the queue with the given query or URL',
-  aliases: ['p'],
+  aliases: ['ins'],
   slash: new SlashCommandBuilder()
     .setName('insert')
     .setDescription('Insert a song to the front of the queue with the given query or URL.')

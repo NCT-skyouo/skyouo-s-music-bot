@@ -1271,7 +1271,7 @@ class Player extends EventEmitter {
       if (queue.autoplay) {
         const wasPlaying = queue.playing
         queue.previousTrack.push(queue.playing)
-        const nowPlaying = queue.playing = (await YoutubeExtractor.getRelatedVideos(wasPlaying.url))[0]
+        const nowPlaying = queue.playing = [await this.searchTracks("youtube-related:" + queue.playing.url, false, false)][0];
         queue.playing.requestedBy = wasPlaying.requestedBy
         nowPlaying.queue = queue.playing.queue = queue
         this._playYTDLStream(queue, false).then(() => {

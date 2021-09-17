@@ -16,13 +16,15 @@ module.exports = {
   run: async (bot, msg, args) => {
     const { config, MessageEmbed, sdb, player, isDJPerm, db } = bot
     if (!args[0]) {
-      return msg.channel.send(
-        new MessageEmbed()
-          .setTitle('用法錯誤')
+      return msg.channel.send({
+        embeds: [
+          new MessageEmbed()
+          .setTitle('❌ 用法錯誤')
           .setColor('RANDOM')
           .addField('用法範例', '```' + msg.guild.prefix + 'playlist [歌單名稱]```')
           .setFooter(config.footer, bot.user.displayAvatarURL())
-      )
+        ]
+      })
     }
     const all = await sdb.all()
     const list = []

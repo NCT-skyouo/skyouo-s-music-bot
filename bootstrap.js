@@ -159,6 +159,7 @@ try {
   updater()
   DatabaseTest()
   require('./bot.js')
+  require("./libs/v5-core/src/YoutubeDlPatchDownloader")
 } catch (e) {
   coreLogger.fatal('進程錯誤!!!')
   for (const line of e.toString().split('\n')) coreLogger.error(line)

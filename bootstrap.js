@@ -77,7 +77,7 @@ async function updater() {
   try {
     const res = await fetch('https://raw.githubusercontent.com/NCT-skyouo/skyouo-s-music-bot/master/version.json').catch((e) => { throw e })
     const info = await res.json().catch((e) => { throw e })
-    if (info.latest.major === "0") info.latest.major = "5"
+    if (info.latest.major === "0") info.latest.major = "6"
     const fetchedVer = `v${info.latest.major}.${info.latest.minor}.${info.latest.patch}${info.latest.patch ? `-c${info.latest.patch}` : ""}`
     coreLogger.info("============= 更新日誌 =============")
     if (Number(info.latest.major) > Number(major)) {

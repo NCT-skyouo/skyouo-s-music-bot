@@ -15,6 +15,15 @@ module.exports = {
     .addStringOption(option => option.setName('歌曲名稱').setDescription('想搜索歌詞的歌曲名稱.').setRequired(true)),
   run: async (bot, msg, args) => {
     const { player, MessageEmbed, config, mojim, genius, MessageMenuOption } = bot
+    if (!args[0]) {
+      return msg.channel.send({ embeds: [
+        new MessageEmbed()
+          .setTitle("❌ 錯誤", msg.guild.iconURL())
+          .setColor("RED")
+          .addField("錯誤訊息", "\nError: 沒有提供歌曲名稱!\n用法: " + msg.guild.prefix + "lyrics (歌曲名稱)```\n\n```")
+          .setFooter(config.footer, bot.user.displayAvatarURL())
+      ]})
+    }
     const message = await msg.channel.send({
       embeds: [
         new MessageEmbed()

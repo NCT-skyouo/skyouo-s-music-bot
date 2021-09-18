@@ -15,6 +15,15 @@ module.exports = {
         .addStringOption(option => option.setName('song').setDescription('Shows the lyrics of the current playing song').setRequired(true)),
     run: async (bot, msg, args) => {
         const { player, MessageEmbed, config, mojim, genius, MessageMenuOption } = bot
+        if (!args[0]) {
+            return msg.channel.send({ embeds: [
+              new MessageEmbed()
+                .setTitle("❌ Failed", msg.guild.iconURL())
+                .setColor("RED")
+                .addField("Message", "\nError: You have to provide song name!\nUsage: " + msg.guild.prefix + "lyrics (Song Name)```\n\n```")
+                .setFooter(config.footer, bot.user.displayAvatarURL())
+            ]})
+          }
         const message = await msg.channel.send({
             embeds: [
                 new MessageEmbed()

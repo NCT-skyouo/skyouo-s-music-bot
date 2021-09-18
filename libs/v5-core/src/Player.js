@@ -1179,11 +1179,11 @@ class Player extends EventEmitter {
       // If the member leaves a voice channel
       if (!oldState.channelId || newState.channelId) return
       // If the channel is not empty
-      if (this.client.channels.cache.get(queue.voiceConnection.joinConfig.channelId).members.size > 1) return
+      if (this.client.channels.cache.get(queue.voiceConnection.joinConfig.channelId).members.filter(m => !m.user.bot).size > 1) return
       // Disconnect from the voice channel
       // queue.voiceConnection.disconnect()
       setTimeout(() => {
-        if (this.client.channels.cache.get(queue.voiceConnection.joinConfig.channelId).members.size > 1) return;
+        if (this.client.channels.cache.get(queue.voiceConnection.joinConfig.channelId).members.filter(m => !m.user.bot).size > 1) return;
         // Destroy the voice connection
         queue.destroy()
         // Delete the queue

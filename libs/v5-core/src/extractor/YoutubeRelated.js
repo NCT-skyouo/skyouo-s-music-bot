@@ -3,7 +3,7 @@ const Track = require("../Track");
 
 const ytsr = require('youtube-sr').default
 
-module.exports = class YoutubeVideoKeywordExtractor extends BaseExtractor {
+module.exports = class YoutubeRelatedExtractor extends BaseExtractor {
     constructor(options) {
         super({ id: 'youtube-releated' })
     }

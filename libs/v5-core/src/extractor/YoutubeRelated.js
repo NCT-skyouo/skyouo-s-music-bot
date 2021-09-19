@@ -10,7 +10,7 @@ module.exports = class YoutubeRelatedExtractor extends BaseExtractor {
 
     search(query, options) {
         return new Promise(async (resolve, reject) => {
-            resolve (await ytsr.getVideo(query)).videos?.map(i => new Track({
+            resolve ((await ytsr.getVideo(query)).videos?.map(i => new Track({
                 title: i.title,
                 duration: i.durationFormatted,
                 bestThumbnail: { url: `https://i.ytimg.com/vi/${i.id}/maxresdefault.jpg` },
@@ -18,7 +18,7 @@ module.exports = class YoutubeRelatedExtractor extends BaseExtractor {
                 url: `https://www.youtube.com/watch?v=${i.id}`,
                 fromPlaylist: false,
                 fromYoutube: true
-              }, null, null))
+              }, null, null)))
         });
     }
 

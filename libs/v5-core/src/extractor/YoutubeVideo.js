@@ -54,6 +54,6 @@ module.exports = class YoutubeVideoKeywordExtractor extends BaseExtractor {
     }
 
     validate(query) {
-        return [/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/.test(query)]
+        return [/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/)([^"&?\/\s]{11})/.test(query) && !query.includes("youtube-related:")]
     }
 }

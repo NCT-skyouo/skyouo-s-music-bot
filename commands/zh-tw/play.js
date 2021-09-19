@@ -202,6 +202,7 @@ module.exports = {
             })
           })
           .on('trackChanged', (oldTrack, newTrack) => {
+            newTrack.queue.voter = []
             newTrack.startedAT = Date.now()
             // 播放下一首歌曲時
             if (bot.gdb.notifysongs?.enable) msg.channel.send({

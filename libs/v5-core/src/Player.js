@@ -1115,7 +1115,7 @@ class Player extends EventEmitter {
       const queue = this.queues.find((g) => g.guildID === guildID)
       if (!queue) reject(new Error('Not Playing'))
       try {
-        this._playYTDLStream(queue, false, (queue.voiceConnection.dispatcher.streamTime + queue.additionalStreamTime) + time * 1000)
+        this._playYTDLStream(queue, true, (queue.resource.playbackDuration + queue.additionalStreamTime) + time * 1000)
           .then(resolve)
           .catch(reject)
       } catch (e) {
@@ -1129,7 +1129,7 @@ class Player extends EventEmitter {
       const queue = this.queues.find((g) => g.guildID === guildID)
       if (!queue) reject(new Error('Not Playing'))
       try {
-        this._playYTDLStream(queue, false, (queue.voiceConnection.dispatcher.streamTime + queue.additionalStreamTime) - time * 1000)
+        this._playYTDLStream(queue, true, (queue.resource.playbackDuration + queue.additionalStreamTime) - time * 1000)
           .then(resolve)
           .catch(reject)
       } catch (e) {
@@ -1271,7 +1271,7 @@ class Player extends EventEmitter {
       if (queue.autoplay) {
         const wasPlaying = queue.playing
         queue.previousTrack.push(queue.playing)
-        const nowPlaying = queue.playing = [await this.searchTracks("youtube-related:" + queue.playing.url, false, false)][0];
+        const nowPlaying = queue.playing = [await this.searchTracks("youtube-related:" + wasPlaying, false, false)][0];
         queue.playing.requestedBy = wasPlaying.requestedBy
         nowPlaying.queue = queue.playing.queue = queue
         this._playYTDLStream(queue, false).then(() => {
@@ -1336,10 +1336,6 @@ class Player extends EventEmitter {
 
   getFilters() {
     return filters;
-  }
-
-  _eval(str) {
-    return eval(str)
   }
 };
 

@@ -240,6 +240,7 @@ class Player extends EventEmitter {
       // Get guild queue
       const queue = this.queues.find((g) => g.guildID === guildID)
       if (!queue) return reject(new Error('Not playing'))
+      if (!queue.playing.durationMS) return reject(new Error('播放直播時, 無法使用該功能!'))
       Object.keys(newFilters).forEach((filterName) => {
         queue.filters[filterName] = newFilters[filterName]
       })
@@ -1012,6 +1013,7 @@ class Player extends EventEmitter {
       const queue = this.queues.find((g) => g.guildID === guildID)
       if (!queue) return reject(new Error('Not Playing'))
       if (!timeFormated) return reject('Cannot seek')
+      if (!queue.playing.durationMS) return reject(new Error('播放直播時, 無法使用該功能!'))
       try {
         const time = timeFormated.split(':').reverse().reduce((prev, curr, i) => prev + curr * Math.pow(60, i), 0)
         this._playYTDLStream(queue, false, time ? (time * 1000) : 0).then(resolve)
@@ -1045,6 +1047,7 @@ class Player extends EventEmitter {
       const queue = this.queues.find((g) => g.guildID === guildID)
       if (!queue) return reject(new Error('Not playing'))
       if (isNaN(pitch) || pitch > 100) reject("Bad pitch. The pitch is not a integer or it's above than 100.")
+      if (!queue.playing.durationMS) return reject(new Error('播放直播時, 無法使用該功能!'))
       queue.pitch = pitch
       this._playYTDLStream(queue, true, false).then(resolve)
     })
@@ -1058,8 +1061,9 @@ class Player extends EventEmitter {
     return new Promise((resolve, reject) => {
       const queue = this.queues.find((g) => g.guildID === guildID)
       if (!queue) reject(new Error('Not Playing'))
+      if (!queue.playing.durationMS) return reject(new Error('播放直播時, 無法使用該功能!'))
       try {
-        if (!((number - 1) < queue.tracks.length)) reject(new Error("只訂數字大於"))
+        if (!((number - 1) < queue.tracks.length)) reject(new Error("指定數字大於播放清單數字!"))
         queue.tracks.slice(0, (queue.tracks.length - number))
         this._playYTDLStream(queue, false).then(resolve)
       } catch (e) {
@@ -1075,6 +1079,7 @@ class Player extends EventEmitter {
     return new Promise((resolve, reject) => {
       const queue = this.queues.find((g) => g.guildID === guildID)
       if (!queue) reject(new Error('Not Playing'))
+      if (!queue.playing.durationMS) return reject(new Error('播放直播時, 無法使用該功能!'))
       try {
         if (!queue.previousTrack.length) reject(new Error("找不到上個播放的歌曲"))
         // old implement:
@@ -1095,6 +1100,7 @@ class Player extends EventEmitter {
     return new Promise((resolve, reject) => {
       const queue = this.queues.find((g) => g.guildID === guildID)
       if (!queue) reject(new Error('Not Playing'))
+      if (!queue.playing.durationMS) return reject(new Error('播放直播時, 無法使用該功能!'))
       queue.autoplay = !queue.autoplay
       resolve(queue.autoplay)
     })
@@ -1114,6 +1120,7 @@ class Player extends EventEmitter {
     return new Promise((resolve, reject) => {
       const queue = this.queues.find((g) => g.guildID === guildID)
       if (!queue) reject(new Error('Not Playing'))
+      if (!queue.playing.durationMS) return reject(new Error('播放直播時, 無法使用該功能!'))
       try {
         this._playYTDLStream(queue, true, (queue.resource.playbackDuration + queue.additionalStreamTime) + time * 1000)
           .then(resolve)
@@ -1128,6 +1135,7 @@ class Player extends EventEmitter {
     return new Promise((resolve, reject) => {
       const queue = this.queues.find((g) => g.guildID === guildID)
       if (!queue) reject(new Error('Not Playing'))
+      if (!queue.playing.durationMS) return reject(new Error('播放直播時, 無法使用該功能!'))
       try {
         this._playYTDLStream(queue, true, (queue.resource.playbackDuration + queue.additionalStreamTime) - time * 1000)
           .then(resolve)

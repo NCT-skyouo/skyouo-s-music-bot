@@ -23,16 +23,13 @@ SOFTWARE.
 */
 
 const Discord = require('discord.js')
-const { demuxProbe, createAudioResource, AudioResource, StreamType } = require('@discordjs/voice')
-const prism = require('prism-media')
-const ytdl = require('discord-ytdl-core')
-const ytdlo = require('ytdl-core')
+const { demuxProbe, createAudioResource, AudioResource } = require('@discordjs/voice')
 const Queue = require('./Queue')
-const Util = require('./Util')
 
 const { spawn } = require('child_process');
 
 const LocalTools = require('./LocalTools')
+const { Readable } = require('stream')
 
 // yt-dlp <url> -q -o - -f bestaudio - | ffmpeg -i - -acodec libopus -f opus -ac 2 -ar 48000 -
 // pipe yt-dlp's stdout to ffmpeg's stdin, get ffmpeg's stdout as a ReadableStream
@@ -62,6 +59,8 @@ function FFmpegOpus(stream, seekTime=0, filterArg=0) {
     "48000",
     "-ac", 
     "2",
+    "-b:a",
+    "168k",
     ...filterArg,
     "-"
   ];
@@ -115,6 +114,8 @@ function FFmpegSeek(stream, seekTime) {
     "48000",
     "-ac", 
     "2",
+    "-b:a",
+    "168k",
     "-"
   ];
 
@@ -234,7 +235,7 @@ class Track {
 
       var newStream = player.extractor.extractTrack(this, { encoderArgs, seekTime });
       
-      newStream = newStream.stdout;
+      newStream = newStream instanceof Readable ? newStream : newStream.stdout;
       
       if (encoderArgs.length) newStream = FFmpegOpus(newStream, seekTime, encoderArgs);
 

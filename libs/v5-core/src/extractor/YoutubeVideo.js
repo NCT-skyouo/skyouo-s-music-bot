@@ -1,9 +1,9 @@
-const BaseExtractor = require("./BaseExtractor")
+const BaseExtractor = require("./BaseExtractor");
 const Track = require("../Track");
 
-const { ms2mmss, s2ms } = require("../LocalTools")
+const { ms2mmss, s2ms } = require("../LocalTools");
 
-const youtubeDl = require("youtube-dl-exec")
+const youtubeDl = require("youtube-dl-exec");
 
 const ytdl = require("ytdl-core");
 
@@ -42,15 +42,25 @@ module.exports = class YoutubeVideoKeywordExtractor extends BaseExtractor {
     }
 
     extract(track, options) {
-        return youtubeDl.raw(track.url, {
-            o: '-',
-            q: '',
-            f: 'bestaudio[ext=webm+acodec=opus+asr=48000]/bestaudio',
-            r: '512K',
-            audioQuality: "192K"
-        }, {
-            stdio: ['ignore', 'pipe', 'ignore']
-        })
+        if (track.durationMS !== 0) { // check for stream, if not stream, use youtube-dl to play it.
+            return youtubeDl.raw(track.url, {
+                o: '-',
+                q: '',
+                f: 'bestaudio[ext=webm+acodec=opus+asr=48000]/bestaudio',
+                r: '512K'
+            }, {
+                stdio: ['ignore', 'pipe', 'ignore']
+            })
+        } else {
+            return ytdl(track.url, {
+                dlChunkSize: 0,
+                highWaterMark: 1 << 25,
+                isHLS: true,
+                requestOptions: {
+                    headers: reqOpt
+                }
+            })
+        }
     }
 
     validate(query) {

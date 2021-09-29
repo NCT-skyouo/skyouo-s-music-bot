@@ -1,11 +1,8 @@
-
-
 const Discord = require('discord.js')
-const { VoiceConnection, createAudioPlayer, AudioPlayerStatus, entersState, AudioResource, VoiceConnectionStatus, VoiceConnectionDisconnectReason } = require('@discordjs/voice')
+const { VoiceConnection, createAudioPlayer, AudioPlayerStatus, entersState, AudioResource, VoiceConnectionStatus } = require('@discordjs/voice')
 const { EventEmitter } = require('events')
 const { Stream } = require('stream')
 const Track = require('./Track')
-const queue = require('../../../commands/zh-tw/queue')
 
 const wait = (ms) => new Promise(resolve => setTimeout(resolve, ms))
 

@@ -1063,8 +1063,8 @@ class Player extends EventEmitter {
       if (!queue) reject(new Error('Not Playing'))
       if (!queue.playing.durationMS) return reject(new Error('播放直播時, 無法使用該功能!'))
       try {
-        if (!((number - 1) < queue.tracks.length)) reject(new Error("指定數字大於播放清單數字!"))
-        queue.tracks.slice(0, (queue.tracks.length - number))
+        if (!(number < queue.tracks.length)) reject(new Error("指定數字大於播放清單數字!"))
+        queue.tracks = queue.tracks.slice(0, (queue.tracks.length - number))
         this._playYTDLStream(queue, false).then(resolve)
       } catch (e) {
         reject(e)

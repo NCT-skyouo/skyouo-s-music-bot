@@ -38,7 +38,7 @@ module.exports = {
             .setTitle('❌ 無法設定', msg.guild.iconURL())
             .setColor('FF2323')
             .addField('錯誤訊息', '```' + e.toString() + '```')
-            .setFooter(config.footer, bot.user.displayAvatarURL())
+            .setFooter(bot.config.footer, bot.user.displayAvatarURL())
         ]
       })
     }

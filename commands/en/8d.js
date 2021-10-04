@@ -38,7 +38,7 @@ module.exports = {
                         .setTitle('❌ Failed', msg.guild.iconURL())
                         .setColor('FF2323')
                         .addField('Error', '```' + e.toString() + '```')
-                        .setFooter(config.footer, bot.user.displayAvatarURL())
+                        .setFooter(bot.config.footer, bot.user.displayAvatarURL())
                 ]
             })
         }

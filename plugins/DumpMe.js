@@ -13,7 +13,7 @@ module.exports = {
     author: "NCT skyouo",
     version: "1.1.0",
     api: ['2.0.0'],
-    support: ['6.0.0'],
+    support: ['6.0.0', '6.0.1'],
     requires: ['discord.js', 'node-fetch'],
     loadLater: true,
     Plugin: class {

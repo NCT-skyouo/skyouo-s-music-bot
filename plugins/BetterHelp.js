@@ -129,7 +129,7 @@ module.exports = {
 	author: 'NCT skyouo',
 	version: '1.3.0',
 	api: ['2.0.0'],
-	support: ['6.0.0', '6.0.0 Preview'],
+	support: ['6.0.0', '6.0.0 Preview', '6.0.1'],
 	requires: ['discord.js'],
 	Plugin: class {
 		constructor(bot, api) {

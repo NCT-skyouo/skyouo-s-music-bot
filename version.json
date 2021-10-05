@@ -2,8 +2,8 @@
   "latest": {
     "major": "6",
     "minor": "0",
-    "patch": "0",
+    "patch": "1",
     "commit": "0",
-    "update_message": "新版 version 6, 請立刻遷移."
+    "update_message": "詳情見 Github."
   }
 }

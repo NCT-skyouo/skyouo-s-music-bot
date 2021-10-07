@@ -6,7 +6,7 @@
     author: "Your name",
     version: "1.0.0",
     api: ['2.0.0'],
-    support: ['6.0.0'],
+    support: ['6.0.0', '6.0.1'],
     requires: ['discord.js'],
     Plugin: class {
       constructor(bot, api) {

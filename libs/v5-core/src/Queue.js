@@ -143,7 +143,7 @@ class Queue extends EventEmitter {
     this.voiceConnection.subscribe(this.audioPlayer)
 
     this.voiceConnection.on('stateChange', async (_, newState) => {
-      if (newState.status === VoiceConnectionStatus.Disconnected) {
+      if (newState.status === VoiceConnectionStatus.Disconnected && this.tracks.length) {
         if (this.voiceConnection.rejoinAttempts < 5) {
           /*
               如果代碼不是 4014 的話, 應該是可以恢復的, 所以再嘗試一下吧.

@@ -1,4 +1,4 @@
-const Database = require("@replit/database")
+const Database = require("better-replit-db")
 
 class replit {
 	constructor(name, opt={}) {

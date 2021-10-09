@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+const { fetch } = require('undici')
 
 class LBRY {
     async search(query) {

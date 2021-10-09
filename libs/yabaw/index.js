@@ -1,4 +1,4 @@
-const fetch = require('node-fetch')
+const { fetch } = require('undici')
 
 class RequestFailedError extends Error {
     constructor(message) {

@@ -1,4 +1,4 @@
-const fetch = require("node-fetch")
+const { fetch } = require('undici')
 var cheerio = require('cheerio');
 async function search(q, opt = "") {
   const res = await fetch("https://mojim.com/" + encodeURIComponent(q) + ".html?t3" + opt, {

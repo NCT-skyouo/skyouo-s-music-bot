@@ -4,7 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 
-const fetch = require("node-fetch");
+const { fetch } = require('undici')
 const ytrend = require('@freetube/yt-trending-scraper')
 const express = require("express");
 const app = express();

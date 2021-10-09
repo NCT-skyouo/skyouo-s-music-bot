@@ -9,7 +9,7 @@ class replit {
     this.opt.startMiddle = this.opt.startMiddle || (n => n)
     this.opt.endMiddle = this.opt.endMiddle || (n => n)
 
-		this.db = new Database()
+		this.db = Database
 	}
 
 	get(k) {

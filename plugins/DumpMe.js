@@ -1,3 +1,6 @@
+const { fetch } = require('undici')
+const { MessageEmbed } = require("discord.js")
+
 function randstr(length) {
     var result = '';
     var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -37,8 +40,6 @@ module.exports = {
             this.api.registerCategory("sysadmin")
             var self = this
             async function dump_ZH_TW(bot, msg, args) {
-                const { MessageEmbed } = require("discord.js")
-                const fetch = require('node-fetch')
                 if (bot.config.ownerid !== msg.author.id) return msg.channel.send({
                     embeds: [
                         new MessageEmbed()
@@ -142,8 +143,6 @@ module.exports = {
             };
 
             async function dump_EN(bot, msg, args) {
-                const { MessageEmbed } = require("discord.js")
-                const fetch = require('node-fetch')
                 if (bot.config.ownerid !== msg.author.id) return msg.channel.send({
                     embeds: [
                         new MessageEmbed()

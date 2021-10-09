@@ -16,7 +16,6 @@ const DB = require(`./db.js`)
 const { Player } = require(`./libs/v5-core/index.js`)
 const Mojim = require(`./libs/mojim/index.js`)
 const Genius = require(`./libs/genius/index.js`)
-// const disbut = require('discord-buttons')
 
 var config = JSON.parse(fs.readFileSync(`${__dirname}/config/config.json`, 'utf-8'));
 
@@ -28,7 +27,6 @@ const opt = {
 // 初始化 機器人 實例
 let bot = new Client({ fetchAllMembers: config.fetchAllMembers, intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MESSAGES] })
 bot.cache = new (require("./libs/cache/cache"))()
-// disbut(bot)
 // 初始化 音樂 功能
 const player = new Player(bot, opt)
 // 初始化 列表

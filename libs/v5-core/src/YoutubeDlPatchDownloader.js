@@ -1,5 +1,5 @@
 const os = require('os');
-const request = require('request');
+const { request } = require('undici');
 const fs = require('fs');
 const ytdlPath = require("youtube-dl-exec/src/constants").YOUTUBE_DL_PATH;
 

@@ -7,7 +7,8 @@ const codename = `Fantasy`
 
 global["v5"] = { version: version, codename: codename }
 var config = require('./config/config.json')
-const fetch = require('node-fetch')
+
+const { fetch } = require('undici')
 const fs = require('fs')
 const resolve = require('path').resolve
 const Logger = require('./libs/logger.js')

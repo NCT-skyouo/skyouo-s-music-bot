@@ -71,7 +71,7 @@ module.exports = {
       var bot = this.bot, api = this.api, configs = this.configs
       function placehold(originString) {
         return originString
-          .replace(/%bot_users%/g, bot.users.cache.size)
+          .replace(/%bot_users%/g, bot.guilds.cache.map(g => g.memberCount).reduce((i, j) => i + j))
           .replace(/%bot_guilds%/g, bot.guilds.cache.size)
           .replace(/%bot_prefix%/g, bot.config.prefix)
           .replace(/%v5_version%/g, v5.version)
@@ -88,11 +88,7 @@ module.exports = {
           var theStatus = configs.status[count]
           if (theStatus.onlyIf) {
             if (!eval(placehold(theStatus.onlyIf))) {
-              if (count === until) {
-                count = 0
-              } else {
-                count++
-              }
+              count = count !== until ? count + 1 : 0;
               return
             }
           }
@@ -104,14 +100,11 @@ module.exports = {
               url: theStatus.url
             }]
           })
-          if (count !== until) {
-            count++
-          } else {
-            count = 0
-          }
+
+          count = count !== until ? count + 1 : 0;
         }
 
-        bot.once("ready", updateStatus)
+        updateStatus();
         setInterval(updateStatus, this.configs.time * 1000)
         this.status = "active"
       } catch (e) {

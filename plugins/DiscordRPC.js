@@ -9,9 +9,9 @@ module.exports = {
 	description: "想要讓大家知道您正在使用 Kristen 嘛?\n那麼使用 Discord RPC 吧!",
 	enable: true,
 	author: 'NCT skyouo',
-	version: '1.1.0',
+	version: '1.2.0',
 	api: ['*'],
-	support: ['6.0.0 Preview'],
+	support: ['6.0.0', '6.0.1'],
 	requires: ['discord-rpc'],
 	Plugin: class {
 		constructor(bot, api) {
@@ -69,7 +69,7 @@ module.exports = {
 				let connection = q.voiceConnection
 				if (bot.channels.cache.get(connection.joinConfig.channelId).members.has(bot.config.ownerid)) {
 					client.setActivity({
-						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], bot.player.resolveQueryToReadable(t.url, self.configs.locale)),
+						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], 'Youtube Music'),
 						state: util.format(self.locales[self.configs.locale]['rpc.start.state'], t.name),
 						largeImageKey: 'dj-disk',
 						smallImageKey: 'playing',
@@ -89,7 +89,7 @@ module.exports = {
 				let connection = q.voiceConnection
 				if (bot.channels.cache.get(connection.joinConfig.channelId).members.has(bot.config.ownerid)) {
 					client.setActivity({
-						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], bot.player.resolveQueryToReadable(t.url, self.configs.locale)),
+						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], 'Youtube Music'),
 						state: util.format(self.locales[self.configs.locale]['rpc.start.state'], t.name),
 						largeImageKey: 'dj-disk',
 						smallImageKey: 'playing',
@@ -119,7 +119,7 @@ module.exports = {
 
 					const totalTime = track.durationMS
 					client.setActivity({
-						details: util.format(self.locales[self.configs.locale]['rpc.pause.details'], bot.player.resolveQueryToReadable(track.url, self.configs.locale)),
+						details: util.format(self.locales[self.configs.locale]['rpc.pause.details'], 'Youtube Music'),
 						state: util.format(self.locales[self.configs.locale]['rpc.pause.state'], track.name),
 						largeImageKey: 'dj-disk',
 						smallImageKey: 'pausing',
@@ -141,7 +141,7 @@ module.exports = {
 						queue.voiceConnection.dispatcher.streamTime + queue.additionalStreamTime : 0) / 1000)
 					const totalTime = track.durationMS
 					client.setActivity({
-						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], bot.player.resolveQueryToReadable(track.url, self.configs.locale)),
+						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], 'Youtube Music'),
 						state: util.format(self.locales[self.configs.locale]['rpc.start.state'], track.name),
 						largeImageKey: 'dj-disk',
 						smallImageKey: 'playing',

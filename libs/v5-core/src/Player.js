@@ -1016,7 +1016,7 @@ class Player extends EventEmitter {
       if (!queue.playing.durationMS) return reject(new Error('播放直播時, 無法使用該功能!'))
       try {
         const time = timeFormated.split(':').reverse().reduce((prev, curr, i) => prev + curr * Math.pow(60, i), 0)
-        this._playYTDLStream(queue, false, time ? (time * 1000) : 0).then(resolve)
+        this._playYTDLStream(queue, true, time ? (time * 1000) : 0).then(resolve)
       } catch (e) {
         reject(e)
       }
@@ -1065,7 +1065,7 @@ class Player extends EventEmitter {
       try {
         if (!(number < queue.tracks.length)) reject(new Error("指定數字大於播放清單數字!"))
         queue.tracks = queue.tracks.slice(0, (queue.tracks.length - number))
-        this._playYTDLStream(queue, false).then(resolve)
+        this._playYTDLStream(queue, true).then(resolve)
       } catch (e) {
         reject(e)
       }
@@ -1089,7 +1089,7 @@ class Player extends EventEmitter {
 
         queue.tracks.unshift(queue.playing)
         queue.playing = queue.previousTrack.shift()
-        this._playYTDLStream(queue, false).then(resolve)
+        this._playYTDLStream(queue, true).then(resolve)
       } catch (e) {
         reject(e)
       }

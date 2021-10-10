@@ -254,6 +254,8 @@ class Queue extends EventEmitter {
     this.resource?.volume?.read();
     this.resource?.encoder?.destroy();
     this.resource?.encoder?.read();
+
+    this.voiceConnection.removeAllListeners("stateChange");
   }
 
   get calculatedVolume() {

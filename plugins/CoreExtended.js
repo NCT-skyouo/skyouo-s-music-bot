@@ -8,7 +8,7 @@ const Track = require('../libs/v5-core/src/Track');
 module.exports = {
   name: "Core Extended",
   id: "core-extended",
-  description: "不知道哪個地方出錯嗎? 那麼試試 Debug Kristen!\nDebug Kristen 可以精確的幫助您找出程序中的錯誤!",
+  description: "Kristen 支援的 7 個網站太少? 透過 CoreExtended 在增加一些!",
   enable: true,
   author: "NCT skyouo",
   version: "1.0.0",

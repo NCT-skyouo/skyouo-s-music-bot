@@ -1,8 +1,8 @@
 module.exports = class API {
   constructor(bot) {
     this.bot = bot
-    this.version = '2.2.0'
-    this.compatible = ['2.0.0', '2.1.0', '2.2.0']
+    this.version = '2.2.1'
+    this.compatible = ['2.0.0', '2.1.0', '2.2.0', '2.2.1']
     this.incompatible = []
     this.categories = ['music', 'filter', 'utility', 'list', 'admin']
   }
@@ -17,9 +17,10 @@ module.exports = class API {
 
   registerCommand(name, prop = {}, onCommand, language) {
     var temp = {}
-    for (var key in prop) {
-      temp[key] = prop[key]
-    }
+    //for (var key in prop) {
+    //  temp[key] = prop[key]
+    //}
+    Object.assign(temp, prop);
     temp.run = onCommand
     temp.name = name
     if (language) {
@@ -99,7 +100,7 @@ module.exports = class API {
   }
 
   registerExtractor(extractor) {
-    this.bot.player.extractor.register(extractor)
+    this.bot.player.extractor.register(new extractor())
   }
 
   hasPermission(permission) {

@@ -17,7 +17,7 @@ module.exports = {
   requires: ['discord.js', '@discord-player/extractor', 'reverbnation-scraper'],
   Plugin: class {
     constructor(bot, api) {
-      this.logger = api.getLoggerInstance('插件-v6除錯')
+      this.logger = api.getLoggerInstance('插件-核心擴展')
       this.status = "load"
       this.bot = bot
       this.api = api

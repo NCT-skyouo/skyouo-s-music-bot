@@ -1,3 +1,6 @@
+var fs = require('fs')
+var path = require('path')
+
 module.exports = class API {
   constructor(bot) {
     this.bot = bot
@@ -72,10 +75,8 @@ module.exports = class API {
   }
 
   registerFileAsDB(plugin, name) {
-    var fs = require('fs')
-
-    if (!fs.existsSync(require('path').resolve(__dirname, '../../plugins/' + plugin))) {
-      fs.mkdirSync(require('path').resolve(__dirname, '../../plugins/' + plugin))
+    if (!fs.existsSync(path.resolve(__dirname, '../../plugins/' + plugin))) {
+      fs.mkdirSync(path.resolve(__dirname, '../../plugins/' + plugin))
     }
 
     var Store = require('../better-storing/index')()
@@ -83,7 +84,7 @@ module.exports = class API {
     var Database = Store.getStoringInstance()
     var middles = Store.getBulitInMiddle()
     var opt = {
-      path: require('path').resolve(__dirname, '../../plugins/' + plugin),
+      path: path.resolve(__dirname, '../../plugins/' + plugin),
       caching: true
     }
     opt.startMiddle = middles.startJSON

@@ -1,6 +1,3 @@
-const Track = require("../v5-core/src/Track")
-
-// const fetch = require("node-fetch")
 module.exports = class Cache {
     constructor(name) {
         this.name = name

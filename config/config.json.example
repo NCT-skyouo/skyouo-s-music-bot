@@ -168,6 +168,13 @@
       "allowClientUserAccess": true,
       "allowListenEvents": true
     },
+    "CoreExtended": {
+      "allowPlayerAccess": true
+    },
+    "DatabaseFixer": {
+      "allowImportantConfigsAccess": true,
+      "allowDatabaseAccess": true
+    },
     "DiscordRPC": {
       "allowImportantConfigsAccess": true,
       "allowCacheAccess": true,

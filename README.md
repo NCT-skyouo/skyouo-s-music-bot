@@ -1,4 +1,7 @@
 # skyouo-s-music-bot-v6
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V76MG57)
+
 English version of the document is coming soon!
 
 ## 許可證

@@ -1231,12 +1231,12 @@ class Player extends EventEmitter {
       const stateChange = (oldState, newState) => {
         if (newState.status === AudioPlayerStatus.Idle && oldState.status !== AudioPlayerStatus.Idle && !queue.queueLock) {
           queue.destroy() // Destroy the queue
-          queue.removeListener('stateChange', stateChange)
+          queue.audioPlayer.removeListener('stateChange', stateChange)
           return this._playTrack(queue.guildID, false)
         }
         return;
       }
-      queue.audioPlayer.on('stateChange', stateChange)
+      queue.audioPlayer.on('stateChange', stateChange) // or use once?
     })
   }
 

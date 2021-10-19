@@ -69,7 +69,7 @@ module.exports = {
 				let connection = q.voiceConnection
 				if (bot.channels.cache.get(connection.joinConfig.channelId).members.has(bot.config.ownerid)) {
 					client.setActivity({
-						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], 'Youtube Music'),
+						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], self.bot.player.extractor.getId(t.url).split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ')),
 						state: util.format(self.locales[self.configs.locale]['rpc.start.state'], t.name),
 						largeImageKey: 'dj-disk',
 						smallImageKey: 'playing',
@@ -89,7 +89,7 @@ module.exports = {
 				let connection = q.voiceConnection
 				if (bot.channels.cache.get(connection.joinConfig.channelId).members.has(bot.config.ownerid)) {
 					client.setActivity({
-						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], 'Youtube Music'),
+						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], self.bot.player.extractor.getId(t.url).split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ')),
 						state: util.format(self.locales[self.configs.locale]['rpc.start.state'], t.name),
 						largeImageKey: 'dj-disk',
 						smallImageKey: 'playing',
@@ -119,7 +119,7 @@ module.exports = {
 
 					const totalTime = track.durationMS
 					client.setActivity({
-						details: util.format(self.locales[self.configs.locale]['rpc.pause.details'], 'Youtube Music'),
+						details: util.format(self.locales[self.configs.locale]['rpc.pause.details'], self.bot.player.extractor.getId(track.url).split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ')),
 						state: util.format(self.locales[self.configs.locale]['rpc.pause.state'], track.name),
 						largeImageKey: 'dj-disk',
 						smallImageKey: 'pausing',
@@ -141,7 +141,7 @@ module.exports = {
 						queue.voiceConnection.dispatcher.streamTime + queue.additionalStreamTime : 0) / 1000)
 					const totalTime = track.durationMS
 					client.setActivity({
-						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], 'Youtube Music'),
+						details: util.format(self.locales[self.configs.locale]['rpc.start.details'], self.bot.player.extractor.getId(track.url).split('-').map(w => w[0].toUpperCase() + w.slice(1)).join(' ')),
 						state: util.format(self.locales[self.configs.locale]['rpc.start.state'], track.name),
 						largeImageKey: 'dj-disk',
 						smallImageKey: 'playing',

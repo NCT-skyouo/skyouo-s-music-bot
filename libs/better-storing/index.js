@@ -8,8 +8,9 @@ module.exports = function () {
     return mod.provide[mod.nowUsing]
   }
 
-  mod.registerType = function () {
-
+  mod.registerType = function (type, provider) {
+    mod.types.push(type)
+    mod.provide[type] = provider
   }
 
   mod.use = function (type) {

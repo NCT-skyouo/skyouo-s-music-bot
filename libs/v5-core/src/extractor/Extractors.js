@@ -21,7 +21,8 @@ const YoutubePlaylist = require('./YoutubePlaylist')
 const YoutubeRelated = require('./YoutubeRelated');
 
 module.exports = class Extractors {
-    constructor() {
+    constructor(defaultOptions) {
+        this.defaultOptions = defaultOptions;
         this.extractors = [];
         this._genericExtractor = null;
         this.register(new BilibiliVideo());
@@ -57,7 +58,7 @@ module.exports = class Extractors {
         this._genericExtractor = extractor;
     }
 
-    searchTrack(query, options) {
+    searchTrack(query, options={}) {
         return new Promise((resolve, reject) => {
             var extractor = this.extractors.find(extractor => {
                 var isMatch = extractor.validate(query);
@@ -67,6 +68,8 @@ module.exports = class Extractors {
                 } else return false;
             })
 
+            options = Object.assign({}, this.defaultOptions, options);
+
             if (!extractor) extractor = this._genericExtractor;
 
             if (!extractor) throw new Error('No extractor found that fits for video');
@@ -75,7 +78,7 @@ module.exports = class Extractors {
         })
     }
 
-    extractTrack(track, options) {
+    extractTrack(track, options={}) {
         var extractor = this.extractors.find(extractor => {
             var isMatch = extractor.validate(track.url);
             if (isMatch[0]) {
@@ -83,6 +86,8 @@ module.exports = class Extractors {
                 return true;
             } else return false;
         })
+
+        options = Object.assign({}, this.defaultOptions, options);
 
         if (!extractor) extractor = this._genericExtractor;
 

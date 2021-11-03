@@ -22,7 +22,8 @@ var config = JSON.parse(fs.readFileSync(`${__dirname}/config/config.json`, 'utf-
 // 初始選項
 const opt = {
   useAPI: config.searchProvider === 'API',
-  apiKEYs: config.APIKEY
+  apiKEYs: config.APIKEY,
+  downloadProvider: config.downloadProvider
 }
 // 初始化 機器人 實例
 let bot = new Client({ fetchAllMembers: config.fetchAllMembers, intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_VOICE_STATES, Intents.FLAGS.GUILD_MESSAGES] })

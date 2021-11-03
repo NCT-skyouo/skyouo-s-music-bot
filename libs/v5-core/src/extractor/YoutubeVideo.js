@@ -5,6 +5,8 @@ const { ms2mmss, s2ms } = require("../LocalTools");
 
 const youtubeDl = require("youtube-dl-exec");
 
+const play = require("play-dl");
+
 const ytdl = require("ytdl-core");
 
 function getFirefoxUserAgent() {
@@ -15,7 +17,7 @@ function getFirefoxUserAgent() {
 
 const reqOpt = {
     'Accept-Language': "zh-TW, zh;q=0.9, zh-MO;q=0.8, zh-CN;q=0.7",
-    'User-Agent': getFirefoxUserAgent()
+    'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.72 Safari/537.36"
 }
 
 module.exports = class YoutubeVideoKeywordExtractor extends BaseExtractor {
@@ -42,7 +44,7 @@ module.exports = class YoutubeVideoKeywordExtractor extends BaseExtractor {
     }
 
     extract(track, options) {
-        if (track.durationMS !== 0) { // check for stream, if not stream, use youtube-dl to play it.
+        if (track.durationMS !== 0 && ['youtube-dl', 'youtube-dl+http'].includes(options.engine)) { // check for stream, if not stream, use youtube-dl to play it.
             return youtubeDl.raw(track.url, {
                 o: '-',
                 q: '',
@@ -52,6 +54,11 @@ module.exports = class YoutubeVideoKeywordExtractor extends BaseExtractor {
             }, {
                 stdio: ['ignore', 'pipe', 'ignore']
             })
+        } else if (track.durationMS !== 0 && ['auto', 'ytdl-core', 'ytdl-core+http'].includes(options.engine)) {
+            return play.stream(track.url)
+        } else if (track.durationMS !== 0 && options.engine === 'http') {
+            // todo: m3u8 directly
+            throw new Error('http engine is not supported for youtube video in current version');
         } else {
             return ytdl(track.url, {
                 dlChunkSize: 0,

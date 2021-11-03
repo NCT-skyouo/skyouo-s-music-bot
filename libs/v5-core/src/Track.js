@@ -235,13 +235,14 @@ class Track {
 
       var newStream = player.extractor.extractTrack(this, { encoderArgs, seekTime });
       
-      newStream = newStream instanceof Readable ? newStream : newStream.stdout;
+      newStream = newStream instanceof Readable ? newStream : newStream instanceof Promise ? (await newStream)?.stream : newStream.stdout;
       
       if (encoderArgs.length) newStream = FFmpegOpus(newStream, seekTime, encoderArgs);
 
-      demuxProbe((encoderArgs.length || !seekTime) ? newStream : FFmpegSeek(newStream, seekTime))
+      demuxProbe(newStream)
         .then((probe) => {
-          resolve(createAudioResource(probe.stream, { metadata: this, inputType: probe.type /*=== "arbitrary" ? StreamType.Opus : probe.type*/, inlineVolume: true }))
+          var afterStream = (encoderArgs.length || !seekTime) ? probe.stream : FFmpegSeek(probe.stream, seekTime)
+          resolve(createAudioResource(afterStream, { metadata: this, inputType: probe.type, inlineVolume: true }))
         }) // make inline volume true = use ffmpeg
         .catch(reject);
     })

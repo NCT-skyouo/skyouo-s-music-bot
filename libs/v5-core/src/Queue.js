@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const { VoiceConnection, createAudioPlayer, AudioPlayerStatus, entersState, AudioResource, VoiceConnectionStatus } = require('@discordjs/voice')
+const { VoiceConnection, createAudioPlayer, AudioPlayerStatus, entersState, AudioResource, VoiceConnectionStatus, NoSubscriberBehavior } = require('@discordjs/voice')
 const { EventEmitter } = require('events')
 const { Stream } = require('stream')
 const Track = require('./Track')
@@ -132,7 +132,12 @@ class Queue extends EventEmitter {
 
     this.readyLock = false
 
-    this.audioPlayer = createAudioPlayer();
+    this.audioPlayer = createAudioPlayer({
+      behaviors: {
+        maxMissedFrames: 30,
+        noSubscriber: NoSubscriberBehavior.Stop
+      }
+    });
 
     /**
      * @type {AudioResource} 

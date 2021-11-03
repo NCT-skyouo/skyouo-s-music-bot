@@ -145,9 +145,15 @@ class Player extends EventEmitter {
 
     this.apiKEYs = options.useAPI ? options.apiKEYs : []
 
+    this.engine = options.downloadProvider || 'auto'
+
     this.cache = client.cdb ? client.cdb : new Cache()
 
-    this.extractor = new Extractor()
+    this.extractor = new Extractor({
+      useAPI: this.useAPI,
+      apiKEYs: this.apiKEYs,
+      engine: this.engine,
+    })
 
     // Listener to check if the channel is empty
     client.on('voiceStateUpdate', (oldState, newState) => this._handleVoiceStateUpdate(oldState, newState))

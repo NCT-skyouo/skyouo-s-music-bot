@@ -13,6 +13,7 @@
   "mentionForPrefixTitle": "歡迎來到 v6",
   "fetchAllMembers": false,
   "searchProvider": "Scraping",
+  "downloadProvider": "ytdl-core",
   "APIKEY": [""],
   "offical_server": "https://discord.gg/F3gSD5C",
   "genius": {

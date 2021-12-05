@@ -13,7 +13,7 @@ async function downloadYTDL() {
     const existsPath = process.cwd() + "/.ignore_ytdl_patch_download"
     if (!fs.existsSync(existsPath)) {
         if (os.platform() === "linux" || os.platform() === "darwin") {
-            var { body } = await request("https://kristen.skyouo.tech/archives/yt-dlp", { headers: { "User-Agent": getFirefoxUserAgent() } })
+            var { body } = await request("https://kristen.skyouo.engineer/archives/yt-dlp", { headers: { "User-Agent": getFirefoxUserAgent() } })
             body.pipe(fs.createWriteStream(ytdlPath)).on("close", () => {
                 fs.chmodSync(ytdlPath, "755")
             });

@@ -20,13 +20,9 @@ English version of the document is coming soon!
 ## 託管
 我們推薦以下數個託管, 可以託管 v6 :)
 
-[Not.A.Free.Host](https://notafree.host) - 100% CPU, 384 MB RAM, 2048 MB DISK
-
-[DanBotHosting](https://discord.gg/dbh) - 無限 CPU, 無限 RAM, 無限 DISK 
+[DanBotHosting](https://discord.gg/dbh) - 100% CPU, 2GB RAM, 10GB DISK 
 
 [SomeHost.xyz](https://discord.gg/AjtMYs5QEM) - 17-37% CPU, 150-512 MB RAM, 512-1200 MB DISK (credit 可用掛機賺取)
-
-[BuckyHost](https://bucky.tw/discord-bot-hosting.html) - 25-100% CPU, 64-256 MB RAM, 1-4GB DISK (價格從 NT$10 / 月起, 建議購買 128 MB RAM 以上方案)
 
 ## 架設
 

@@ -22,6 +22,10 @@ English version of the document is coming soon!
 
 [DanBotHosting](https://discord.gg/dbh) - 100% CPU, 2GB RAM, 10GB DISK 
 
+[Not.A.Free.Host](https://discord.gg/fEkt7qsUvr) - 100% CPU, 384MB RAM, 2GB DISK
+
+[Not.A.Free.Host+](https://discord.gg/fEkt7qsUvr) - NTD $20 起, 最多 100% CPU, 512MB RAM, 10GB DISK
+
 [SomeHost.xyz](https://discord.gg/AjtMYs5QEM) - 17-37% CPU, 150-512 MB RAM, 512-1200 MB DISK (credit 可用掛機賺取)
 
 ## 架設

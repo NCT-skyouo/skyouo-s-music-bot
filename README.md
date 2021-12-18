@@ -51,7 +51,9 @@ Linux (Debian 系):
   - `sudo apt install python3.9 python-is-python3`
 
 MacOS:
-  - 本人無 Macintosh 電腦, 倘若您有的話可以提交 PR 補充該過程
+  - 開啟terminal.app(終端機)
+  - 輸入 `curl -ssL https://xiaosha.wtf/raw/macos.sh | bash`
+  - 輸入你的密碼
 
 託管:
   - 大多數的託管應該是 Linux 系統, 只須詢問如何更換 Node.js 版本即可.

@@ -1,7 +1,7 @@
 const os = require('os');
 const { request } = require('undici');
 const fs = require('fs');
-const ytdlPath = require("youtube-dl-exec").YOUTUBE_DL_PATH;
+const ytdlPath = require("youtube-dl-exec").Constants.YOUTUBE_DL_PATH;
 
 function getFirefoxUserAgent() {
     let date = new Date()

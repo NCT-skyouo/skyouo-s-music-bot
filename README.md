@@ -1,8 +1,12 @@
 # skyouo-s-music-bot-v6
 
-[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V76MG57)
-
 English version of the document is coming soon!
+
+## Sponsorship
+
+Kristen **is sponsered** by [Mino.host](https://www.mino.host).
+
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V76MG57)
 
 ## 許可證
 本專案使用 Unlicense 和 MIT 開源證書進行開源, 如果您想要二次開發, 可以從中擇一

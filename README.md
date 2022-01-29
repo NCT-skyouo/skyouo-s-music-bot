@@ -4,7 +4,7 @@ English version of the document is coming soon!
 
 ## Sponsorship
 
-Kristen **is sponsered** by [Mino.host](https://www.mino.host).
+Kristen **is sponsered** by [Mino.Host](https://www.mino.host).
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/V7V76MG57)
 

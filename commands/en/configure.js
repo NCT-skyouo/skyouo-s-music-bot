@@ -1,6 +1,11 @@
 const { Permissions } = require("discord.js")
 const { SlashCommandBuilder } = require('@discordjs/builders');
 
+const { REST } = require('@discordjs/rest');
+const { Routes } = require('discord-api-types/v9');
+
+const { MessageActionRow, MessageButton } = require('discord.js');
+
 // v13
 
 module.exports = {
@@ -637,17 +642,19 @@ module.exports = {
                                 .setThumbnail(msg.guild.iconURL())
                                 .setColor('FFFF23')
                                 .addFields(
-                                    { name: '🎶 DJ', value: `${(gconf.dj.enable ? ':o: Enabled' : ':x: Not enabled')}\n\`${dpre}config dj\``, inline: true },
-                                    { name: '💳 Premium', value: `${(gconf.premium.enable ? ':o: Enabled' : ':x: Not enabled')}\n\`${dpre}config premium\``, inline: true },
-                                    { name: '🗝️ Prefix', value: `${((gconf.prefix.personal[msg.author.id] ?? gconf.prefix.value) ? ':o: Enabled' : ':x: Not enabled')}\n\`${dpre}config prefix\``, inline: true }
+                                    { name: '🗝️ Prefix', value: `${((gconf.prefix.personal[msg.author.id] ?? gconf.prefix.value) ? ':o: Customized' : ':x: Not Customized')}\n\`${dpre}config prefix\``, inline: true },
+                                    { name: '🗺️ Language', value: '🇺🇸 English\n`' + dpre + 'config language`', inline: true },
+                                    { name: '💳 Premium', value: `${(gconf.premium.enable ? ':o: Enabled' : ':x: Disabled')}\n\`${dpre}config premium\``, inline: true },
                                 )
                                 .addFields(
-                                    { name: '🚷 DJ Only', value: `${(gconf.djonly.enable ? ':o: Enabled' : ':x: Not enabled')}\n\`${dpre}config djonly\``, inline: true },
-                                    { name: '🔄 Max Queue length', value: `${(gconf.maxqueue.enable ? ':o: Enabled' : ':x: Not enabled')}\n\`${dpre}config maxqueue\``, inline: true },
-                                    { name: '🗺️ Language', value: '`English`\n' + dpre + 'config language`', inline: true }
+                                    { name: '🎶 DJ', value: `${(gconf.dj.enable ? ':o: Enabled' : ':x: Disabled')}\n\`${dpre}config dj\``, inline: true },
+                                    { name: '🚷 DJ Only', value: `${(gconf.djonly.enable ? ':o: Enabled' : ':x: Disabled')}\n\`${dpre}config djonly\``, inline: true },
+                                    { name: '🔄 Max Queue length', value: `${(gconf.maxqueue.enable ? ':o: Enabled' : ':x: Disabled')}\n\`${dpre}config maxqueue\``, inline: true },
                                 )
                                 .addFields(
-                                    { name: '🔈 Show Songs Infomation', value: `${(gconf.notifysongs.enable ? ':o: Enabled' : ':x: Not enabled')}\n\`${dpre}config notifysongs\``, inline: true }
+                                    { name: '🔈 Show Songs Infomation', value: `${(gconf.notifysongs.enable ? ':o: Enabled' : ':x: Disabled')}\n\`${dpre}config notifysongs\``, inline: true },
+                                    { name: '⛔ Blacklist', value: `${(gconf.blacklist.enable ? ':o: Enabled' : ':x: Disabled')}\n\`${dpre}config blacklist\``, inline: true },
+                                    { name: '💎 Preview', value: `${(gconf.preview.enable ? ':o: Enabled' : ':x: Disabled')}\n\`${dpre}config preview\``, inline: true },
                                 )
                                 .setFooter(config.footer, bot.user.displayAvatarURL())
                         ]
